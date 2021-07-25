@@ -1,0 +1,50 @@
+﻿@page
+@model MScInvoice.UI.Pages.Admin.ItemsModel
+@{
+}
+
+<div id="app" class="container">
+
+    <div v-if="!editing">
+        <button class="button" @@click="newItem">Add New Item</button>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr v-for="(item, index) in items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td><a @@click="editItem(item.id, index)">Edit</a></td>
+                <td><a @@click="deleteItem(item.id, index)">Remove</a></td>
+            </tr>
+        </table>
+    </div>
+    <div v-else>
+        <div class="field">
+            <label class="label">Item Name</label>
+            <div class="control">
+                <input class="input" v-model="itemModel.name" />
+            </div>
+            <label class="label">Item Price</label>
+            <div class="control">
+                <input class="input" v-model="itemModel.price" />
+            </div>
+            <button class="button is-success" @@click="createItem" v-if="!itemModel.id">Create Item</button>
+            <button class="button is-warning" @@click="updateItem" v-else>Update Item</button>
+            <button class="button" @@click="cancel">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="~/js/invoices/items.js"></script>
+}
