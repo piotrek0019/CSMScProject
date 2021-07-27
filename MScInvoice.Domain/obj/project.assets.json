@@ -4105,11 +4105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
+      "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
       "projectName": "MScInvoice.Domain",
-      "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
+      "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
       "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-      "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\obj\\",
+      "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -4162,7 +4162,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

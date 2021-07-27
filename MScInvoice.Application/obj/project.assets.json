@@ -4546,11 +4546,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj",
+      "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj",
       "projectName": "MScInvoice.Application",
-      "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj",
+      "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj",
       "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-      "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\obj\\",
+      "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -4571,8 +4571,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj": {
-              "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj"
+            "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj": {
+              "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj"
             }
           }
         }
@@ -4603,7 +4603,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

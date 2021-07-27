@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tAFOZZQXYhEYFLZ5gvZhBair/bn27mpcgdic6bcjsiNMp0jEZa0KM2TGtSHkppIR/aHc1WkYwOTHiQrBYpIRaw==",
+  "dgSpecHash": "8zYWx+eJKUJ6mRqu8x5I+B3dBEk+31WGI0t0lHjLSBTbp8CKkTYXT6T7j9EyYKOesZu7KQZqyWkypJpORRdEng==",
   "success": true,
-  "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.UI\\MScInvoice.UI.csproj",
+  "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",

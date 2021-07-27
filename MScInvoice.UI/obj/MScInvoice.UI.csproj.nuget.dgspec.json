@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.UI\\MScInvoice.UI.csproj": {}
+    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj": {}
   },
   "projects": {
-    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj": {
+    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj",
+        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj",
         "projectName": "MScInvoice.Application",
-        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj",
+        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\obj\\",
+        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -32,8 +32,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj": {
-                "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj"
+              "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj": {
+                "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj"
               }
             }
           }
@@ -64,18 +64,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj": {
+    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj",
+        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj",
         "projectName": "MScInvoice.Database",
-        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\MScInvoice.Database.csproj",
+        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\MScInvoice.Database.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Database\\obj\\",
+        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -96,8 +96,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj": {
-                "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj"
+              "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj": {
+                "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj"
               }
             }
           }
@@ -144,18 +144,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj": {
+    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
+        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
         "projectName": "MScInvoice.Domain",
-        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
+        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Domain\\obj\\",
+        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -208,18 +208,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.UI\\MScInvoice.UI.csproj": {
+    "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.UI\\MScInvoice.UI.csproj",
+        "projectUniqueName": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj",
         "projectName": "MScInvoice.UI",
-        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.UI\\MScInvoice.UI.csproj",
+        "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.UI\\obj\\",
+        "outputPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -240,8 +240,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj": {
-                "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject-master\\MScInvoice.Application\\MScInvoice.Application.csproj"
+              "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj": {
+                "projectPath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Application\\MScInvoice.Application.csproj"
               }
             }
           }
@@ -283,7 +283,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
