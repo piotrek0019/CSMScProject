@@ -22,13 +22,14 @@ namespace MScInvoice.Database
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<PayMethod> PayMethods { get; set; }
         public DbSet<InvoiceItem> InvoiceItems { get; set; }
+        public DbSet<InvoiceSection> InvoiceSections { get; set; }
         public DbSet<MyUser> MyUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<InvoiceItem>()
-                .HasKey(x => new { x.InvoiceId, x.ItemId });
+                .HasKey(x => new { x.InvoiceSectionId, x.ItemId });
         }
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MScInvoice.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210622215826_init")]
+    [Migration("20210808213848_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,6 +75,9 @@ namespace MScInvoice.Database.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -114,6 +117,8 @@ namespace MScInvoice.Database.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -182,19 +187,142 @@ namespace MScInvoice.Database.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("MScInvoice.Domain.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address1");
+
+                    b.Property<string>("Address2");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("MyUserId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Number1");
+
+                    b.Property<string>("PostCode");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MyUserId");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("InvoiceNo");
+
+                    b.Property<string>("MyUserId");
+
+                    b.Property<int>("PayMethodId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("MyUserId");
+
+                    b.HasIndex("PayMethodId");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceItem", b =>
+                {
+                    b.Property<int>("InvoiceSectionId");
+
+                    b.Property<int>("ItemId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("InvoiceSectionId", "ItemId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("InvoiceItems");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceSection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("InvoiceId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.ToTable("InvoiceSections");
+                });
+
             modelBuilder.Entity("MScInvoice.Domain.Models.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
+                    b.Property<string>("MyUserId");
+
                     b.Property<string>("Name");
 
-                    b.Property<decimal>("Value");
+                    b.Property<decimal>("Price");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MyUserId");
+
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.PayMethod", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MyUserId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MyUserId");
+
+                    b.ToTable("PayMethods");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.MyUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+
+                    b.ToTable("MyUser");
+
+                    b.HasDiscriminator().HasValue("MyUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -240,6 +368,65 @@ namespace MScInvoice.Database.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.Customer", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.MyUser", "MyUser")
+                        .WithMany("Customers")
+                        .HasForeignKey("MyUserId");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.Invoice", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.Customer", "Customer")
+                        .WithMany("Invoice")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MScInvoice.Domain.Models.MyUser", "MyUser")
+                        .WithMany("Invoices")
+                        .HasForeignKey("MyUserId");
+
+                    b.HasOne("MScInvoice.Domain.Models.PayMethod", "PayMethod")
+                        .WithMany("Invoice")
+                        .HasForeignKey("PayMethodId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceItem", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.InvoiceSection", "InvoiceSection")
+                        .WithMany("InvoiceItem")
+                        .HasForeignKey("InvoiceSectionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MScInvoice.Domain.Models.Item", "Item")
+                        .WithMany("InvoiceItem")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceSection", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.Invoice", "Invoice")
+                        .WithMany("InvoiceSection")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.Item", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.MyUser", "MyUser")
+                        .WithMany("Items")
+                        .HasForeignKey("MyUserId");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.PayMethod", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.MyUser", "MyUser")
+                        .WithMany("PayMethod")
+                        .HasForeignKey("MyUserId");
                 });
 #pragma warning restore 612, 618
         }

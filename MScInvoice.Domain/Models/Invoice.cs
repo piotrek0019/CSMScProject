@@ -16,6 +16,6 @@ namespace MScInvoice.Domain.Models
         public Customer Customer { get; set; }
         public int PayMethodId { get; set; }
         public PayMethod PayMethod { get; set; }
-        public ICollection<InvoiceItem> InvoiceItem { get; set; }
+        public ICollection<InvoiceSection> InvoiceSection { get; set; }
     }
 }

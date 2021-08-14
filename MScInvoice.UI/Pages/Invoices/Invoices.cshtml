@@ -1,5 +1,79 @@
 ﻿@page
 @model MScInvoice.UI.Pages.Admin.InvoicesModel
-@{
-}
-    <h2>Invoices</h2>
+@{ }
+<h2>Invoices</h2>
+
+<div id="app" class="container">
+    <dropdown-items></dropdown-items>
+    <div>
+
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>City</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr v-for="(customer, index) in customers">
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.city}}</td>
+                <td><a @@click="editCustomer(customer.id, index)">Edit</a></td>
+                <td><a @@click="deleteCustomer(customer.id, index)">Remove</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <select v-model="selectedCustomer">
+        <option v-for="customer in customers" v-bind:value="customer.id">
+            {{customer.name}}
+        </option>
+    </select>
+    <span>Selected: {{ selectedCustomer }}</span>
+
+
+    <div>
+
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr v-for="(item, index) in items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td><a @@click="editItem(item.id, index)">Edit</a></td>
+                <td><a @@click="deleteItem(item.id, index)">Remove</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr v-for="(payMethod, index) in payMethods">
+                <td>{{payMethod.id}}</td>
+                <td>{{payMethod.name}}</td>
+                <td><a @@click="editPayMethod(payMethod.id, index)">Edit</a></td>
+                <td><a @@click="deletePayMethod(payMethod.id, index)">Remove</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+    @section scripts{
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="~/js/components/dropdown-items.js"></script>
+    }

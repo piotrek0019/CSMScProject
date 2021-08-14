@@ -243,17 +243,36 @@ namespace MScInvoice.Database.Migrations
 
             modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceItem", b =>
                 {
-                    b.Property<int>("InvoiceId");
+                    b.Property<int>("InvoiceSectionId");
 
                     b.Property<int>("ItemId");
 
                     b.Property<int>("Quantity");
 
-                    b.HasKey("InvoiceId", "ItemId");
+                    b.HasKey("InvoiceSectionId", "ItemId");
 
                     b.HasIndex("ItemId");
 
                     b.ToTable("InvoiceItems");
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceSection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("InvoiceId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.ToTable("InvoiceSections");
                 });
 
             modelBuilder.Entity("MScInvoice.Domain.Models.Item", b =>
@@ -375,14 +394,22 @@ namespace MScInvoice.Database.Migrations
 
             modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceItem", b =>
                 {
-                    b.HasOne("MScInvoice.Domain.Models.Invoice", "Invoice")
+                    b.HasOne("MScInvoice.Domain.Models.InvoiceSection", "InvoiceSection")
                         .WithMany("InvoiceItem")
-                        .HasForeignKey("InvoiceId")
+                        .HasForeignKey("InvoiceSectionId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MScInvoice.Domain.Models.Item", "Item")
                         .WithMany("InvoiceItem")
                         .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceSection", b =>
+                {
+                    b.HasOne("MScInvoice.Domain.Models.Invoice", "Invoice")
+                        .WithMany("InvoiceSection")
+                        .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
