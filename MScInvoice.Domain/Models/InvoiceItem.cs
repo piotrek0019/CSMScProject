@@ -6,6 +6,7 @@ namespace MScInvoice.Domain.Models
 {
     public class InvoiceItem
     {
+        public int Id { get; set; }
         public int InvoiceSectionId { get; set; }
         public InvoiceSection InvoiceSection { get; set; }
         public int ItemId { get; set; }

@@ -1,28 +1,29 @@
-﻿Vue.components('dropdown-items', {
+﻿Vue.component('Dropdown', {
+    
     template: `<div class="dropdown" v-if="options">
 
-    <!-- Dropdown Input -->
-    <input class="dropdown-input"
-      :name="name"
-      @focus="showOptions()"
-      @blur="exit()"
-      @keyup="keyMonitor"
-      v-model="searchFilter"
-      :disabled="disabled"
-      :placeholder="placeholder" />
+                <!-- Dropdown Input -->
+                <input class="dropdown-input"
+                  :name="name"
+                  @focus="showOptions()"
+                  @blur="exit()"
+                  @keyup="keyMonitor"
+                  v-model="searchFilter"
+                  :disabled="disabled"
+                  :placeholder="placeholder" />
 
-    <!-- Dropdown Menu -->
-    <div class="dropdown-content"
-      v-show="optionsShown">
-      <div
-        class="dropdown-item"
-        @mousedown="selectOption(option)"
-        v-for="(option, index) in filteredOptions"
-        :key="index">
-          {{ option.name || option.id || '-' }}
-      </div>
-    </div>
-  </div>`,
+                <!-- Dropdown Menu -->
+                <div class="dropdown-content"
+                  v-show="optionsShown">
+                  <div
+                    class="dropdown-item"
+                    @mousedown="selectOption(option)"
+                    v-for="(option, index) in filteredOptions"
+                    :key="index">
+                      {{ option.name || option.id || '-' }}
+                  </div>
+                </div>
+              </div>`,
     props: {
         name: {
             type: String,
@@ -59,7 +60,7 @@
         return {
             selected: {},
             optionsShown: false,
-            searchFilter: ''
+            searchFilter: '',
         }
     },
     created() {

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MScInvoice.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210808213848_init")]
+    [Migration("20210823201850_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -285,6 +285,8 @@ namespace MScInvoice.Database.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("InvoiceSectionId");
+
                     b.Property<string>("MyUserId");
 
                     b.Property<string>("Name");
@@ -292,6 +294,8 @@ namespace MScInvoice.Database.Migrations
                     b.Property<decimal>("Price");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("InvoiceSectionId");
 
                     b.HasIndex("MyUserId");
 
@@ -397,7 +401,7 @@ namespace MScInvoice.Database.Migrations
             modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceItem", b =>
                 {
                     b.HasOne("MScInvoice.Domain.Models.InvoiceSection", "InvoiceSection")
-                        .WithMany("InvoiceItem")
+                        .WithMany()
                         .HasForeignKey("InvoiceSectionId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -417,6 +421,10 @@ namespace MScInvoice.Database.Migrations
 
             modelBuilder.Entity("MScInvoice.Domain.Models.Item", b =>
                 {
+                    b.HasOne("MScInvoice.Domain.Models.InvoiceSection")
+                        .WithMany("Item")
+                        .HasForeignKey("InvoiceSectionId");
+
                     b.HasOne("MScInvoice.Domain.Models.MyUser", "MyUser")
                         .WithMany("Items")
                         .HasForeignKey("MyUserId");

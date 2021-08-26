@@ -22,8 +22,13 @@ namespace MScInvoice.Application.UsersAdmin
             public string UserName { get; set; }
             public string Password { get; set; }
         }
+        public class Response
+        {
+            public string Id { get; set; }
+            public string UserName { get; set; }
+        }
 
-        public async Task<bool> Do(Request request)
+        public async Task<Response> Do(Request request)
         {
             var User = new IdentityUser()
             {
@@ -37,7 +42,11 @@ namespace MScInvoice.Application.UsersAdmin
 
             await _userManager.AddClaimAsync(User, userClaim);
 
-            return true;
+            return new Response
+            {
+                Id = User.Id,
+                UserName = User.UserName
+            };
         }
     }
 }

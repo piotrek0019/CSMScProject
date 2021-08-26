@@ -27,13 +27,14 @@ namespace MScInvoice.UI.Controllers
             _userManager = userManager;
             _passwordHash = passwordHash;
         }
-       
-        public async Task<IActionResult> CreateUser([FromBody] CreateUser.Request request)
-        {
+
+        public async Task<IActionResult> CreateUser([FromBody] CreateUser.Request request) => Ok((await _createUser.Do(request)));
+        /*{
             await _createUser.Do(request);
 
             return Ok();
-        }
+        }*/
+
         [HttpGet("")]
         public IActionResult GetUsers() => Ok(new GetUsers(_userManager).Do());
 

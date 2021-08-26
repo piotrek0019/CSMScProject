@@ -27,6 +27,8 @@
                     console.log(err);
                 }).then(() => {
                     this.loading = false;
+                    this.editing = false;
+                    location.reload();
                 });
         },
         getUser(name) {
@@ -84,7 +86,7 @@
         },
         newUser() {
             this.editing = true;
-            this.userModel.username = "";
+            this.userModel.id = 0;
         },
         cancel() {
             this.editing = false;

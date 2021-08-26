@@ -11,12 +11,12 @@
                 <tr>
                     <th>Name</th>
                     <th></th>
-                    
+
                 </tr>
                 <tr v-for="(user, index) in users">
                     <td>{{user.userName}}</td>
                     <td><a @@click="editUser(user.userName, index)">Edit</a></td>
-                    
+
                 </tr>
             </table>
         </div>
@@ -30,7 +30,7 @@
                 <div class="control">
                     <input class="input" v-model="userModel.password" />
                 </div>
-                <button class="button" @@click="createUser()" v-if="!userModel.username">Create</button>
+                <button class="button" @@click="createUser()" v-if="!userModel.id">Create</button>
                 <button class="button is-warning" @@click="updateUser" v-else>Update Item</button>
                 <button class="button" @@click="cancel">Cancel</button>
             </div>

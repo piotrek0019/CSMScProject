@@ -31,5 +31,9 @@ namespace MScInvoice.Database
             modelBuilder.Entity<InvoiceItem>()
                 .HasKey(x => new { x.InvoiceSectionId, x.ItemId });
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
     }
 }
