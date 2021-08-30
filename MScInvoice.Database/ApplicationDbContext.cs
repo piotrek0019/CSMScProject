@@ -25,12 +25,12 @@ namespace MScInvoice.Database
         public DbSet<InvoiceSection> InvoiceSections { get; set; }
         public DbSet<MyUser> MyUsers { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<InvoiceItem>()
                 .HasKey(x => new { x.InvoiceSectionId, x.ItemId });
-        }
+        }*/
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();

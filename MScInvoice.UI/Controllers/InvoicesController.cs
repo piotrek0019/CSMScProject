@@ -15,23 +15,21 @@ namespace MScInvoice.UI.Controllers
     public class InvoicesController : Controller
     {
         private ApplicationDbContext _ctx;
-        //private IHttpContextAccessor _httpContextAccessor;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        /*public InvoicesController(ApplicationDbContext ctx, IHttpContextAccessor httpContextAccessor)
+        public InvoicesController(ApplicationDbContext ctx, IHttpContextAccessor httpContextAccessor)
         {
             _ctx = ctx;
             _httpContextAccessor = httpContextAccessor;
-        }*/
-        public InvoicesController(ApplicationDbContext ctx)
-        {
-            _ctx = ctx;
         }
+       
         [HttpGet("{id}")]
-        public IActionResult GetInvoice(int id) => Ok(new GetInvoice(_ctx).Do(id));
-        //[HttpPost("")]
-        //public async Task<IActionResult> CreateCustomer([FromBody] CreateInvoice.InvoiceViewModel invoiceViewModel) => Ok((await new CreateInvoice(_ctx, _httpContextAccessor).Do(invoiceViewModel)));
+        public IActionResult GetInvoice(int id) => Ok(new GetInvoice(_ctx, _httpContextAccessor).Do(id));
         [HttpPost("")]
-        public async Task<IActionResult> CreateCustomer([FromBody] CreateInvoice.InvoiceViewModel invoiceViewModel) => Ok((await new CreateInvoice(_ctx).Do(invoiceViewModel)));
+        public async Task<IActionResult> CreateInvoice([FromBody] CreateInvoice.Request request) => Ok((await new CreateInvoice(_ctx, _httpContextAccessor).Do(request)));
+        
 
+        [HttpGet("")]
+        public IActionResult GetInvoices() => Ok(new GetInvoices(_ctx, _httpContextAccessor).Do());
     }
 }

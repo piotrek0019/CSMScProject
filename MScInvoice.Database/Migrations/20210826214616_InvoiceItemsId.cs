@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MScInvoice.Database.Migrations
 {
-    public partial class init : Migration
+    public partial class InvoiceItemsId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -180,6 +180,28 @@ namespace MScInvoice.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    MyUserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Items_AspNetUsers_MyUserId",
+                        column: x => x.MyUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PayMethods",
                 columns: table => new
                 {
@@ -257,45 +279,18 @@ namespace MScInvoice.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
+                name: "InvoiceItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    MyUserId = table.Column<string>(nullable: true),
-                    InvoiceSectionId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Items", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Items_InvoiceSections_InvoiceSectionId",
-                        column: x => x.InvoiceSectionId,
-                        principalTable: "InvoiceSections",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_AspNetUsers_MyUserId",
-                        column: x => x.MyUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "InvoiceItems",
-                columns: table => new
-                {
                     InvoiceSectionId = table.Column<int>(nullable: false),
                     ItemId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InvoiceItems", x => new { x.InvoiceSectionId, x.ItemId });
+                    table.PrimaryKey("PK_InvoiceItems", x => x.Id);
                     table.ForeignKey(
                         name: "FK_InvoiceItems_InvoiceSections_InvoiceSectionId",
                         column: x => x.InvoiceSectionId,
@@ -355,6 +350,11 @@ namespace MScInvoice.Database.Migrations
                 column: "MyUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_InvoiceItems_InvoiceSectionId",
+                table: "InvoiceItems",
+                column: "InvoiceSectionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_InvoiceItems_ItemId",
                 table: "InvoiceItems",
                 column: "ItemId");
@@ -378,11 +378,6 @@ namespace MScInvoice.Database.Migrations
                 name: "IX_InvoiceSections_InvoiceId",
                 table: "InvoiceSections",
                 column: "InvoiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_InvoiceSectionId",
-                table: "Items",
-                column: "InvoiceSectionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Items_MyUserId",
@@ -419,10 +414,10 @@ namespace MScInvoice.Database.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Items");
+                name: "InvoiceSections");
 
             migrationBuilder.DropTable(
-                name: "InvoiceSections");
+                name: "Items");
 
             migrationBuilder.DropTable(
                 name: "Invoices");

@@ -13,44 +13,102 @@ namespace MScInvoice.Application.Invoices
     public class CreateInvoice
     {
         private ApplicationDbContext _context;
-        //private IHttpContextAccessor _httpContextAccessor;
+        private IHttpContextAccessor _httpContextAccessor;
 
-       /* public CreateInvoice(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+       public CreateInvoice(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
-        }*/
-        public CreateInvoice(ApplicationDbContext context)
-        {
-            _context = context;
-            
         }
+      
         public class Items
         {
             public int ItemId { get; set; }
+            public string Name { get; set; }
+            public decimal Price { get; set; }
+            public int Quantity { get; set; }
         }
 
-        public class InvoiceViewModel
+        public class Request
         {
             public int CustomerId { get; set; }
+            public string CustomerName { get; set; }
+            public string CustomerAddress1 { get; set; }
+            public string CustomerAddress2 { get; set; }
+            public string CustomerCity { get; set; }
+            public string CustomerPostCode { get; set; }
+            public string CustomerNumber1 { get; set; }
             public int PayMethodId { get; set; }
             public List<Items> Items { get; set; }
 
         }
-
-        public async Task<bool> Do(InvoiceViewModel invoiceViewModel)
+        public class Response
         {
-            //static userId just for postman
-            var userId = "49d882f8-9a19-4701-a7be-45a697e8da90";
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            public int Id { get; set; }
+            public string InvoiceNo { get; set; }
+            public string Date { get; set; }
+            public int CustomerId { get; set; }
+            public string CustomerName { get; set; }
+        }
+
+        public async Task<Response> Do(Request request)
+        {
+            
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (request.CustomerId == 0)
+            {
+                var customer = new Customer
+                {
+                    Name = request.CustomerName,
+                    Address1 = request.CustomerAddress1,
+                    Address2 = request.CustomerAddress2,
+                    PostCode = request.CustomerPostCode,
+                    City = request.CustomerCity,
+                    Number1 = request.CustomerNumber1,
+                    MyUserId = userId
+                };
+                
+                _context.Customers.Add(customer);
+                await _context.SaveChangesAsync();
+                request.CustomerId = customer.Id;
+            }
+
+            foreach(var item in request.Items)
+            {
+                if(item.ItemId == 0)
+                {
+                    var newItem = new Item
+                    {
+                        Name = item.Name,
+                        Price = item.Price,
+                        MyUserId = userId
+                        
+                    };
+
+                    _context.Items.Add(newItem);
+                    await _context.SaveChangesAsync();
+                    item.ItemId = newItem.Id;
+                }
+
+                var itemDb = _context.Items.FirstOrDefault(x => x.Id == item.ItemId);
+
+                if(itemDb.Name != item.Name || itemDb.Price !=item.Price)
+                {
+                    itemDb.Name = item.Name;
+                    itemDb.Price = item.Price;
+
+                    await _context.SaveChangesAsync();
+                }
+            }
             var invoice = new Invoice
             {
                 InvoiceNo = "11111",
-                CustomerId = invoiceViewModel.CustomerId,
+                CustomerId = request.CustomerId,
                 Date = DateTime.Now,
                 
                 MyUserId = userId,
-                PayMethodId = invoiceViewModel.PayMethodId
+                PayMethodId = request.PayMethodId
             };
 
             _context.Invoices.Add(invoice);
@@ -68,19 +126,32 @@ namespace MScInvoice.Application.Invoices
 
             var items = new List<InvoiceItem>();
 
-            foreach(var item in invoiceViewModel.Items)
+            foreach(var item in request.Items)
             {
                 items.Add(new InvoiceItem
                 {
                     InvoiceSectionId = invoiceSection.Id,
                     ItemId = item.ItemId,
-                    Quantity = 2
+                    Quantity = item.Quantity
                 });
             }
             _context.InvoiceItems.AddRange(items);
 
             await _context.SaveChangesAsync();
-            return true;
+
+           
+            
+
+
+            return new Response
+            { 
+                Id = invoice.Id,
+                InvoiceNo = invoice.InvoiceNo,
+                Date = invoice.Date.ToString("dd/MM/yyyy"),
+                CustomerId = invoice.CustomerId,
+                CustomerName = request.CustomerName
+
+           };
 
         }
       

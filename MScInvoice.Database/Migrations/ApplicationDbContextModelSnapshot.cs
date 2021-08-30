@@ -243,13 +243,19 @@ namespace MScInvoice.Database.Migrations
 
             modelBuilder.Entity("MScInvoice.Domain.Models.InvoiceItem", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("InvoiceSectionId");
 
                     b.Property<int>("ItemId");
 
                     b.Property<int>("Quantity");
 
-                    b.HasKey("InvoiceSectionId", "ItemId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceSectionId");
 
                     b.HasIndex("ItemId");
 

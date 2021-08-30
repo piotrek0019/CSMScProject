@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using MScInvoice.Database;
 using System;
 using System.Collections.Generic;
@@ -11,18 +12,14 @@ namespace MScInvoice.Application.Invoices
     public class GetInvoice
     {
         private ApplicationDbContext _context;
-        //private IHttpContextAccessor _httpContextAccessor;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        /* public CreateInvoice(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+         public GetInvoice(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
          {
              _context = context;
              _httpContextAccessor = httpContextAccessor;
-         }*/
-        public GetInvoice(ApplicationDbContext context)
-        {
-            _context = context;
-
-        }
+         }
+       
         public class InvoiceSections
         {
             public int Id { get; set; }
