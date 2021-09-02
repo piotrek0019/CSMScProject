@@ -29,6 +29,12 @@ namespace MScInvoice.Application.Invoices
             public int Quantity { get; set; }
         }
 
+        public class Sections
+        {
+            public string Name { get; set; }
+            public List<Items> Items { get; set; }
+        }
+
         public class Request
         {
             public int CustomerId { get; set; }
@@ -39,7 +45,7 @@ namespace MScInvoice.Application.Invoices
             public string CustomerPostCode { get; set; }
             public string CustomerNumber1 { get; set; }
             public int PayMethodId { get; set; }
-            public List<Items> Items { get; set; }
+            public List<Sections> Sections { get; set; }
 
         }
         public class Response
@@ -74,33 +80,38 @@ namespace MScInvoice.Application.Invoices
                 request.CustomerId = customer.Id;
             }
 
-            foreach(var item in request.Items)
+            foreach(var section in request.Sections)
             {
-                if(item.ItemId == 0)
+                foreach (var item in section.Items)
                 {
-                    var newItem = new Item
+                    if (item.ItemId == 0)
                     {
-                        Name = item.Name,
-                        Price = item.Price,
-                        MyUserId = userId
-                        
-                    };
+                        var newItem = new Item
+                        {
+                            Name = item.Name,
+                            Price = item.Price,
+                            MyUserId = userId
 
-                    _context.Items.Add(newItem);
-                    await _context.SaveChangesAsync();
-                    item.ItemId = newItem.Id;
-                }
+                        };
 
-                var itemDb = _context.Items.FirstOrDefault(x => x.Id == item.ItemId);
+                        _context.Items.Add(newItem);
+                        await _context.SaveChangesAsync();
+                        item.ItemId = newItem.Id;
+                    }
 
-                if(itemDb.Name != item.Name || itemDb.Price !=item.Price)
-                {
-                    itemDb.Name = item.Name;
-                    itemDb.Price = item.Price;
+                    var itemDb = _context.Items.FirstOrDefault(x => x.Id == item.ItemId);
 
-                    await _context.SaveChangesAsync();
+                    if (itemDb.Name != item.Name || itemDb.Price != item.Price)
+                    {
+                        itemDb.Name = item.Name;
+                        itemDb.Price = item.Price;
+
+                        await _context.SaveChangesAsync();
+                    }
                 }
             }
+
+         
             var invoice = new Invoice
             {
                 InvoiceNo = "11111",
@@ -114,33 +125,35 @@ namespace MScInvoice.Application.Invoices
             _context.Invoices.Add(invoice);
             await _context.SaveChangesAsync();
 
-            var invoiceSection = new InvoiceSection
-            {
-                Name = "blabla",
-                Date = DateTime.Now,
-                InvoiceId = invoice.Id
-            };
-
-            _context.InvoiceSections.Add(invoiceSection);
-            await _context.SaveChangesAsync();
-
+            var sections = new InvoiceSection();
             var items = new List<InvoiceItem>();
-
-            foreach(var item in request.Items)
+            foreach (var section in request.Sections)
             {
-                items.Add(new InvoiceItem
+                sections.InvoiceId = invoice.Id;
+                sections.Date = DateTime.Now;
+                sections.Name = section.Name;
+
+                _context.InvoiceSections.Add(sections);
+                await _context.SaveChangesAsync();
+
+                foreach(var item in section.Items)
                 {
-                    InvoiceSectionId = invoiceSection.Id,
-                    ItemId = item.ItemId,
-                    Quantity = item.Quantity
-                });
+                    items.Add(new InvoiceItem
+                    {
+                        InvoiceSectionId = sections.Id,
+                        ItemId = item.ItemId,
+                        Quantity = item.Quantity
+                    });
+                }
+                _context.InvoiceItems.AddRange(items);
+                await _context.SaveChangesAsync();
+
+                items.Clear();
+                sections = null;
+                sections = new InvoiceSection();
             }
-            _context.InvoiceItems.AddRange(items);
-
-            await _context.SaveChangesAsync();
-
            
-            
+
 
 
             return new Response

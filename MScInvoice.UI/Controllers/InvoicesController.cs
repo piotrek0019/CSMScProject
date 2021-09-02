@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MScInvoice.UI.Controllers
 {
-    [Route("[controller]")]
+    //[Route("[controller]")]
     //[Authorize(Policy = "User")]
     public class InvoicesController : Controller
     {
@@ -23,13 +23,16 @@ namespace MScInvoice.UI.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
        
-        [HttpGet("{id}")]
+        [HttpGet("invoices/{id}")]
         public IActionResult GetInvoice(int id) => Ok(new GetInvoice(_ctx, _httpContextAccessor).Do(id));
-        [HttpPost("")]
+        [HttpPost("invoices")]
         public async Task<IActionResult> CreateInvoice([FromBody] CreateInvoice.Request request) => Ok((await new CreateInvoice(_ctx, _httpContextAccessor).Do(request)));
-        
+        //[HttpPost("sections")]
+        //public async Task<IActionResult> CreateSection([FromBody] CreateSection.Request request) => Ok((await new CreateSection(_ctx, _httpContextAccessor).Do(request)));
+        [HttpPost("sections")]
+        public async Task<IActionResult> CreateSection([FromBody] CreateSection.Request request) => Ok((await new CreateSection(_ctx).Do(request)));
 
-        [HttpGet("")]
+        [HttpGet("invoices")]
         public IActionResult GetInvoices() => Ok(new GetInvoices(_ctx, _httpContextAccessor).Do());
     }
 }

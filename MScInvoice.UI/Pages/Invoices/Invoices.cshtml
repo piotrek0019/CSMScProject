@@ -59,63 +59,74 @@
 
 
         <div class="field">
-
-
-
-            <label class="label">Browse Items</label>
-            <Dropdown :options="items"
-                      v-on:selected="itemSelection"
-                      v-on:filter="getDropdownValues"
-                      :disabled="false"
-                      name="item"
-                      :maxItem="10"
-                      placeholder="Please select a item">
-            </Dropdown>
-            <button class="button is-warning" @@click="addItemToInvoice">Add Item</button>
-
-            <p>Selected item: {{ selectedItem.name || 'none' }}</p>
-
+            <button class="button is-warning" @@click="addSectionToInvoice">Add Section</button>
             <ul>
-                <li v-for="(input, index) in inputs">
-                    <input hidden type="text" v-model="input.id">
-                    <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
-                        <div class="column">
+                <li>Section</li>
+
+                <label class="label">Browse Items</label>
+                <Dropdown :options="items"
+                          v-on:selected="itemSelection"
+                          v-on:filter="getDropdownValues"
+                          :disabled="false"
+                          name="item"
+                          :maxItem="10"
+                          placeholder="Please select a item">
+                </Dropdown>
+                <li v-for="(section, indexSection) in sections">
+
+                    <button class="button is-warning" @@click="addItemToInvoice(indexSection)">Add Item</button>
+
+                    <p>Selected item: {{ selectedItem.name || 'none' }}</p>
+
+                    <ul>
+                        <li>
+                            <label class="label">Section Name</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="input.name">
+                                <input class="input" type="text" v-model="section.name">
                             </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="control">
-                                <input class="input" type="text" v-model="input.price" @@change="calculateSubSum(input)">
+                        </li>
+                        <li v-for="(input, indexItem) in section.inputs">
+                            <input hidden type="text" v-model="input.id">
+                            <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
+                                <div class="column">
+                                    <div class="control">
+                                        <input class="input" type="text" v-model="input.name">
+                                    </div>
+                                </div>
+                                <div class="column is-2">
+                                    <div class="control">
+                                        <input class="input" type="text" v-model="input.price" @@change="calculateSubSum(input)">
+                                    </div>
+                                </div>
+                                <div class="column is-2">
+                                    <div class="control">
+                                        <input class="input" type="text" v-model="input.quantity" @@change="calculateSubSum(input)">
+                                    </div>
+                                </div>
+                                <div class="column is-2">
+                                    <div class="control">
+                                        <input readonly="readonly" class="input" type="text" v-model="input.subSum">
+                                    </div>
+                                </div>
+                                <div class="column is-2">
+                                    <div class="buttons is-right">
+                                        <button class="button is-info is-light" @@click="deleteItemFromInvoice(indexSection, indexItem)">Delete</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="control">
-                                <input class="input" type="text" v-model="input.quantity" @@change="calculateSubSum(input)">
+                            <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+
+                        </li>
+                        <li>
+                            <div class="level-right">
+                                <!-- <p class="level-item"><strong>Total: {{sumTotal}}</strong></p>-->
                             </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="control">
-                                <input readonly="readonly" class="input" type="text" v-model="input.subSum">
-                            </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="buttons is-right">
-                                <button class="button is-info is-light" @@click="deleteItemFromInvoice(index)">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
-                   
-                </li>
-                <li>
-                    <div class="level-right">
-                        <p class="level-item"><strong>Total: {{sumTotal}}</strong></p>
-                    </div>
-                    <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+                            <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-            
+
 
             <div>
                 <div class="select">
