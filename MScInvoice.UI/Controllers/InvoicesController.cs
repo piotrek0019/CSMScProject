@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MScInvoice.UI.Controllers
 {
-    //[Route("[controller]")]
+    [Route("[controller]")]
     //[Authorize(Policy = "User")]
     public class InvoicesController : Controller
     {
@@ -23,16 +23,20 @@ namespace MScInvoice.UI.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
        
-        [HttpGet("invoices/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetInvoice(int id) => Ok(new GetInvoice(_ctx, _httpContextAccessor).Do(id));
-        [HttpPost("invoices")]
+        [HttpPost("")]
         public async Task<IActionResult> CreateInvoice([FromBody] CreateInvoice.Request request) => Ok((await new CreateInvoice(_ctx, _httpContextAccessor).Do(request)));
         //[HttpPost("sections")]
         //public async Task<IActionResult> CreateSection([FromBody] CreateSection.Request request) => Ok((await new CreateSection(_ctx, _httpContextAccessor).Do(request)));
-        [HttpPost("sections")]
-        public async Task<IActionResult> CreateSection([FromBody] CreateSection.Request request) => Ok((await new CreateSection(_ctx).Do(request)));
+        //[HttpPost("")]
+        //public async Task<IActionResult> CreateSection([FromBody] CreateSection.Request request) => Ok((await new CreateSection(_ctx).Do(request)));
 
-        [HttpGet("invoices")]
+        [HttpGet("")]
         public IActionResult GetInvoices() => Ok(new GetInvoices(_ctx, _httpContextAccessor).Do());
+        [HttpPut("")]
+        public async Task<IActionResult> UpdateInvoice([FromBody] UpdateInvoice.Request request) => Ok((await new UpdateInvoice(_ctx, _httpContextAccessor).Do(request)));
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteInvoice(int id) => Ok((await new DeleteInvoice(_ctx).Do(id)));
     }
 }

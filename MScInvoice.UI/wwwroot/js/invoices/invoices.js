@@ -6,16 +6,23 @@
         isDisabledCustomer: true,
         isSeenCustomer: false,
         checkButton: "Show",
+        objectIndex: 0,
+        editing: false,
         sections: [{
                 name: "Section " + "1",
-                inputs: []
+            inputs: [],
+            subSum: 0
          }],
         
         customers: [],
-        selectedPayMethod: 0,
+        selectedPayMethod: {
+            id: 0,
+            name: ''
+        },
         items: [],
         payMethods: [],
         invoices: [],
+        invoice: {},
         selectedCustomer: {
             id: null,
             name: null,
@@ -31,6 +38,7 @@
             price: null
         },
         InvoiceVM: {
+            InvoiceId: null,
             CustomerId: 0,
             CustomerName: " ",
             CustomerAddress1: " ",
@@ -53,12 +61,16 @@
     },
     computed: {
         sumTotal: function () {
-                var sumTotal2 =  this.sections.inputs.reduce(function (previousValue, currentValue) {
-                    subSum = parseFloat(currentValue.subSum);
-                    if (!isNaN(subSum)) {
-                        return previousValue + subSum;
+            var sumTotal2 = 0;
+            this.sections.forEach(section => {
+                  sumTotal2 += section.inputs.reduce(function (previousValue, currentValue) {
+                      totalLine = parseFloat(currentValue.totalLine);
+                      if (!isNaN(totalLine)) {
+                          return previousValue + totalLine;
                     }
                 }, 0);
+            });
+               
             if (!isNaN(sumTotal2)) {
                 return sumTotal2.toFixed(2)
             }
@@ -68,30 +80,8 @@
     methods: {
 
         test() {
-            var sections2 = [];
-            var items2 = [];
-            this.sections.forEach(section => {
 
-                section.inputs.forEach(input => {
-                    items2.push({
-                        ItemId: input.id,
-                        Name: input.name,
-                        Price: input.price,
-                        Quantity: input.quantity
-                    })
-                });
-                console.log("items2");
-                console.log(items2);
-                sections2.push({
-                    Name: section.name,
-                    Items: items2
-                });
-                items2 = [];
-            });
-            
-            console.log(this.sections);
-            console.log("sections2");
-            console.log(sections2)
+            this.sections[0].subSum = 2;
         },
         showHideCustomer: function() {
             this.isSeenCustomer = !this.isSeenCustomer;
@@ -118,27 +108,69 @@
             this.loading = true;
             axios.get('/invoices/' + id)
                 .then(res => {
-                    console.log(res);
+                   
                     var invoice = res.data;
-                    var sections = [];
-                    var items = [];
-                    invoice.invoiceSections.forEach(section => {
-                        sections.push({
+
+                    
+                    this.selectedCustomer = {
+                        id: invoice.customerId,
+                        name: invoice.customerName,
+                        address1: invoice.customerAddress1,
+                        address2: invoice.customerAddress2,
+                        postCode: invoice.customerPostCode,
+                        city: invoice.customerCity,
+                        number1: invoice.customerNumber1
+                    };
+                    this.invoice = {
+                        InvoiceId: invoice.id,
+                        InvoiceNumber: invoice.invoiceNo,
+                        InvoiceDate: invoice.date,
+                        InvoiceDescription: invoice.description
+
+                    };
+                    this.selectedPayMethod = {
+                        id: invoice.payMethodId,
+                        name: invoice.payMethodName
+                    },
+                    
+
+                    //display sections
+                    this.sections = [];
+                    var subSum2 = 0;
+
+                    invoice.invoiceSections.forEach((section, index) => {
+                        this.sections.push({
                             id: section.id,
                             name: section.name,
-                            invoiceItem: section.invoiceItem
-                        })
+                            inputs: [],
+                            subSum: 0
+                        });
+
+
+                        //dispaly items for each section
                         section.invoiceItem.forEach(item => {
-                            items.push({
+                            this.sections[index].inputs.push({
+                                id: item.itemId,
                                 quantity: item.quantity,
                                 name: item.itemName,
-                                price: item.itemPrice
-                            })
-                        })
+                                price: item.itemPrice,
+                                totalLine: item.itemPrice * item.quantity
+                            });
+                        });
+
+                        subSum2 = this.sections[index].inputs.reduce(function (previousValue, currentValue) {
+                            totalLine = parseFloat(currentValue.totalLine);
+                            if (!isNaN(totalLine)) {
+                                return previousValue + totalLine;
+                            }
+                        }, 0);
+                        this.sections[index].subSum = subSum2.toFixed(2);
+
+                        console.log("subSum");
+                        console.log(subSum2);
+                        
                     });
                     
-                    console.log(sections);
-                    console.log(items);
                    
                 })
                 .catch(err => {
@@ -198,7 +230,7 @@
                 CustomerCity: this.selectedCustomer.city,
                 CustomerPostCode: this.selectedCustomer.postCode,
                 CustomerNumber1: this.selectedCustomer.number1,
-                PayMethodId: this.selectedPayMethod,
+                PayMethodId: this.selectedPayMethod.id,
                 Sections: sections2
             })
                 .then(res => {
@@ -215,15 +247,97 @@
         editInvoice(id, index) {
             this.objectIndex = index;
             this.getInvoice(id);
+            this.editing = true;
             
+        },
+        newInvoice() {
+            this.editing = true;
+            this.selectedCustomer = {};
+            this.invoice = {};
+            this.selectedPayMethod = this.payMethods[0];
+            this.sections = [{
+                name: "Section " + "1",
+                inputs: [],
+                subSum: 0
+            }];
+        },
+        cancel() {
+            this.editing = false;
+        },
+        updateInvoice() {
+            this.loading = true;
+
+            var sections2 = [];
+            var items2 = [];
+            this.sections.forEach(section => {
+
+                section.inputs.forEach(input => {
+                    items2.push({
+                        ItemId: input.id,
+                        Name: input.name,
+                        Price: input.price,
+                        Quantity: input.quantity
+                    })
+                })
+                console.log("items2");
+                console.log(items2)
+                sections2.push(
+                    {
+                        Name: section.name,
+                        Items: items2
+                    }
+                )
+                items2 = [];
+            });
+
+
+            axios.put('/invoices', this.InvoiceVM = {
+                InvoiceId: this.invoice.InvoiceId,
+                CustomerId: this.selectedCustomer.id,
+                CustomerName: this.selectedCustomer.name,
+                CustomerAddress1: this.selectedCustomer.address1,
+                CustomerAddress2: this.selectedCustomer.address2,
+                CustomerCity: this.selectedCustomer.city,
+                CustomerPostCode: this.selectedCustomer.postCode,
+                CustomerNumber1: this.selectedCustomer.number1,
+                PayMethodId: this.selectedPayMethod.id,
+                Sections: sections2
+            })
+                .then(res => {
+                    console.log(res.data);
+                    this.invoices.splice(this.objectIndex, 1, res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
+        },
+        deleteInvoice(id, index) {
+            this.loading = true;
+            axios.delete('/invoices/' + id)
+                .then(res => {
+                    console.log(res);
+                    this.invoices.splice(index, 1);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
         },
         addSectionToInvoice() {
             this.sections.push({
                 name: "Section " + (this.sections.length + 1),
-                inputs: []
+                inputs: [],
+                subSum: 0
             });
         },
         addItemToInvoice(index) {
+
+            var subSum2 = 0;
             if (this.selectedItem.id === undefined) {
                 this.selectedItem.id = 0;
             };
@@ -232,18 +346,41 @@
                 name: this.selectedItem.name,
                 price: this.selectedItem.price,
                 quantity: 1,
-                subSum: this.selectedItem.price * 1
+                totalLine: this.selectedItem.price * 1
             });
+
+            subSum2 = this.sections[index].inputs.reduce(function (previousValue, currentValue) {
+                totalLine = parseFloat(currentValue.totalLine);
+                if (!isNaN(totalLine)) {
+                    return previousValue + totalLine;
+                }
+            }, 0);
+            this.sections[index].subSum = subSum2.toFixed(2);
+
+            
             
         },
         deleteItemFromInvoice(indexSection, indexItem) {
             this.sections[indexSection].inputs.splice(indexItem, 1)
         },
-        calculateSubSum(input) {
+        calculateTotalLine(input, indexSection) {
             var total = parseFloat(input.price) * parseFloat(input.quantity);
+
+           
             if (!isNaN(total)) {
-                input.subSum = total.toFixed(2);
+                input.totalLine = total.toFixed(2);
             }
+
+            ///////////////////////////////////////////////////////////////
+            // calculation subSum for each section
+            var subSum2 = this.sections[indexSection].inputs.reduce(function (previousValue, currentValue) {
+                totalLine = parseFloat(currentValue.totalLine);
+                if (!isNaN(totalLine)) {
+                    return previousValue + totalLine;
+                }
+            }, 0);
+            this.sections[indexSection].subSum = subSum2.toFixed(2);
+
         },
         customerSelection(selection) {
             this.selectedCustomer = selection;
@@ -292,7 +429,7 @@
                     this.payMethods = res.data;
                     console.log("PayMethodsArray")
                     console.log(this.payMethods)
-                    this.selectedPayMethod = this.payMethods[0].id;
+                    this.selectedPayMethod = this.payMethods[0];
                 })
                 .catch(err => {
                     console.log(err);

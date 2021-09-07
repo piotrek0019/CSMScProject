@@ -5,7 +5,7 @@
 
     <div id="app" class="container">
         <div v-if="!editing">
-            <button class="button" @@click="newCustomer">Add New Item</button>
+            <button class="button" @@click="newCustomer">Add New Customer</button>
             <table class="table">
                 <tr>
                     <th>Id</th>
@@ -23,7 +23,7 @@
                 </tr>
             </table>
         </div>
-        <div v-else>
+            <div v-else>
             <div class="field">
                 <label class="label">Customer Name</label>
                 <div class="control">

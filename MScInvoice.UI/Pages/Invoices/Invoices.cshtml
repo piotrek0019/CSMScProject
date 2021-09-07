@@ -5,143 +5,188 @@
 
 <div id="app" class="container">
     <div>
-        <div>
-
-            <label class="label">Browse customers</label>
-            <Dropdown :options="customers"
-                      v-on:selected="customerSelection"
-                      v-on:filter="getDropdownValues"
-                      :disabled="false"
-                      name="customer1"
-                      :maxItem="10"
-                      placeholder="Please select a customer">
-            </Dropdown>
-            <p>Selected customer: {{ selectedCustomer.name || 'none' }}</p>
-            <button class="button is-white" @@click="showHideCustomer">{{ checkButton }} Customer</button>
-            <button class="button is-light" @@click="addCustomer">Add new customer</button>
+        <div v-if="editing">
             <div>
-                <div v-if="isSeenCustomer" class="field">
-                    <label class="label">Customer Name</label>
-                    <div class="control">
-                        <input class="input" v-model="selectedCustomer.name" :disabled="isDisabledCustomer" />
-                    </div>
-                    <label class="label">Address 1</label>
-                    <div class="control">
-                        <input class="input" v-model="selectedCustomer.address1" :disabled="isDisabledCustomer" />
-                    </div>
-                    <label class="label">Address 2</label>
-                    <div class="control">
-                        <input class="input" v-model="selectedCustomer.address2" :disabled="isDisabledCustomer" />
-                    </div>
-                    <div class="columns">
-                        <div class="column">
-                            <label class="label">City</label>
-                            <div class="control">
-                                <input class="input" v-model="selectedCustomer.city" :disabled="isDisabledCustomer" />
-                            </div>
-                        </div>
-                        <div class="column">
-                            <label class="label">Post Code</label>
-                            <div class="control">
-                                <input class="input" v-model="selectedCustomer.postCode" :disabled="isDisabledCustomer" />
-                            </div>
+                <div v-if="invoice.InvoiceId" class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
+                    <div class="column">
+                        <input hidden type="text" v-model="invoice.InvoiceId">
+                        <label class="label">Invoice Number</label>
+                        <div class="control">
+                            <input readonly="readonly" class="input" v-model="invoice.InvoiceNumber" />
                         </div>
                     </div>
-                    <label class="label">Number</label>
-                    <div class="control">
-                        <input class="input" v-model="selectedCustomer.number1" :disabled="isDisabledCustomer" />
+                    <div class="column">
+                        <label class="label">Invoice Date</label>
+                        <div class="control">
+                            <input readonly="readonly" class="input" v-model="invoice.InvoiceDate" />
+                        </div>
                     </div>
-
-
                 </div>
-            </div>
-        </div>
 
-
-        <div class="field">
-            <button class="button is-warning" @@click="addSectionToInvoice">Add Section</button>
-            <ul>
-                <li>Section</li>
-
-                <label class="label">Browse Items</label>
-                <Dropdown :options="items"
-                          v-on:selected="itemSelection"
+                <label class="label">Browse customers</label>
+                <Dropdown :options="customers"
+                          v-on:selected="customerSelection"
                           v-on:filter="getDropdownValues"
                           :disabled="false"
-                          name="item"
+                          name="customer1"
                           :maxItem="10"
-                          placeholder="Please select a item">
+                          placeholder="Please select a customer">
                 </Dropdown>
-                <li v-for="(section, indexSection) in sections">
 
-                    <button class="button is-warning" @@click="addItemToInvoice(indexSection)">Add Item</button>
-
-                    <p>Selected item: {{ selectedItem.name || 'none' }}</p>
-
-                    <ul>
-                        <li>
-                            <label class="label">Section Name</label>
-                            <div class="control">
-                                <input class="input" type="text" v-model="section.name">
-                            </div>
-                        </li>
-                        <li v-for="(input, indexItem) in section.inputs">
-                            <input hidden type="text" v-model="input.id">
-                            <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
-                                <div class="column">
-                                    <div class="control">
-                                        <input class="input" type="text" v-model="input.name">
-                                    </div>
-                                </div>
-                                <div class="column is-2">
-                                    <div class="control">
-                                        <input class="input" type="text" v-model="input.price" @@change="calculateSubSum(input)">
-                                    </div>
-                                </div>
-                                <div class="column is-2">
-                                    <div class="control">
-                                        <input class="input" type="text" v-model="input.quantity" @@change="calculateSubSum(input)">
-                                    </div>
-                                </div>
-                                <div class="column is-2">
-                                    <div class="control">
-                                        <input readonly="readonly" class="input" type="text" v-model="input.subSum">
-                                    </div>
-                                </div>
-                                <div class="column is-2">
-                                    <div class="buttons is-right">
-                                        <button class="button is-info is-light" @@click="deleteItemFromInvoice(indexSection, indexItem)">Delete</button>
-                                    </div>
+                <p>Selected customer: {{ selectedCustomer.name || 'none' }}</p>
+                <button class="button is-white" @@click="showHideCustomer">{{ checkButton }} Customer</button>
+                <button class="button is-light" @@click="addCustomer">Add new customer</button>
+                <div>
+                    <div v-if="isSeenCustomer" class="field">
+                        <label class="label">Customer Name</label>
+                        <div class="control">
+                            <input class="input" v-model="selectedCustomer.name" :disabled="isDisabledCustomer" />
+                        </div>
+                        <label class="label">Address 1</label>
+                        <div class="control">
+                            <input class="input" v-model="selectedCustomer.address1" :disabled="isDisabledCustomer" />
+                        </div>
+                        <label class="label">Address 2</label>
+                        <div class="control">
+                            <input class="input" v-model="selectedCustomer.address2" :disabled="isDisabledCustomer" />
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <label class="label">City</label>
+                                <div class="control">
+                                    <input class="input" v-model="selectedCustomer.city" :disabled="isDisabledCustomer" />
                                 </div>
                             </div>
-                            <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
-
-                        </li>
-                        <li>
-                            <div class="level-right">
-                                <!-- <p class="level-item"><strong>Total: {{sumTotal}}</strong></p>-->
+                            <div class="column">
+                                <label class="label">Post Code</label>
+                                <div class="control">
+                                    <input class="input" v-model="selectedCustomer.postCode" :disabled="isDisabledCustomer" />
+                                </div>
                             </div>
-                            <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                        </div>
+                        <label class="label">Number</label>
+                        <div class="control">
+                            <input class="input" v-model="selectedCustomer.number1" :disabled="isDisabledCustomer" />
+                        </div>
 
 
-            <div>
-                <div class="select">
-                    <select v-model="selectedPayMethod">
-                        <option v-for="payMethod in payMethods" v-bind:value="payMethod.id">
-                            {{payMethod.name}}
-                        </option>
-                    </select>
+                    </div>
                 </div>
-                <span>Selected: {{ selectedPayMethod }}</span>
             </div>
-            <button class="button is-link" @@click="createInvoice">Save invoice</button>
-            <button class="button" @@click="test">Test</button>
+
+
+            <div class="field">
+                <button class="button is-warning" @@click="addSectionToInvoice">Add Section</button>
+                <ul>
+                    <li>Section</li>
+
+                    <label class="label">Browse Items</label>
+                    <Dropdown :options="items"
+                              v-on:selected="itemSelection"
+                              v-on:filter="getDropdownValues"
+                              :disabled="false"
+                              name="item"
+                              :maxItem="10"
+                              placeholder="Please select a item">
+                    </Dropdown>
+                    <li v-for="(section, indexSection) in sections">
+
+                        <button class="button is-warning" @@click="addItemToInvoice(indexSection)">Add Item</button>
+
+                        <p>Selected item: {{ selectedItem.name || 'none' }}</p>
+
+                        <ul>
+                            <li>
+                                <label class="label">Section Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" v-model="section.name">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
+                                    <div class="column">
+                                        <label class="label">Name</label>
+                                    </div>
+                                    <div class="column is-2">
+                                        <label class="label">Price</label>
+                                    </div>
+                                    <div class="column is-2">
+                                        <label class="label">Quantity</label>
+                                    </div>
+                                    <div class="column is-2">
+                                        <label class="label">Total</label>
+                                    </div>
+                                    <div class="column is-2">
+                                        <!--??-->
+                                    </div>
+                                </div>
+                            </li>
+                            <li v-for="(input, indexItem) in section.inputs">
+                                <input hidden type="text" v-model="input.id">
+                                <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
+                                    <div class="column">
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="input.name">
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="input.price" @@change="calculateTotalLine(input, indexSection)">
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="input.quantity" @@change="calculateTotalLine(input, indexSection)">
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="control">
+                                            <input readonly="readonly" class="input" type="text" v-model="input.totalLine">
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="buttons is-right">
+                                            <button class="button is-info is-light" @@click="deleteItemFromInvoice(indexSection, indexItem)">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+
+                            </li>
+                            <li>
+                                <div class="level-right">
+                                    <p class="level-item"><strong>Sub Total: {{section.subSum}}</strong></p>
+                                </div>
+                                <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="level-right">
+                            <p class="level-item"><strong>Total: {{sumTotal}}</strong></p>
+                        </div>
+                        <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+                    </li>
+                </ul>
+
+
+                <div>
+                    <div class="select">
+                        <select v-model="selectedPayMethod">
+                            <option v-for="payMethod in payMethods" v-bind:value="payMethod">
+                                {{payMethod.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <span>Selected: {{ selectedPayMethod.name }}</span>
+                </div>
+                <button v-if="!invoice.InvoiceId" class="button is-link" @@click="createInvoice">Save invoice</button>
+                <button class="button" @@click="cancel">Cancel</button>
+                <button v-if="invoice.InvoiceId" class="button is-link" @@click="updateInvoice">Update invoice</button>
+            </div>
         </div>
-        <div>
+        <div v-if="!editing">
+            <button class="button" @@click="newInvoice">Add New Invoice</button>
             <table class="table">
                 <tr>
                     <th>Id</th>
@@ -157,7 +202,7 @@
                     <td>{{invoice.invoiceNo}}</td>
                     <td>{{invoice.date}}</td>
                     <td><a @@click="editInvoice(invoice.id, index)">Edit</a></td>
-                    <td><a @@click="deleteInvoice(invoice.id, index)">Remove</a></td>
+                    <td><a v-if="index + 1 == invoices.length" @@click="deleteInvoice(invoice.id, index)">Remove</a></td>
                 </tr>
             </table>
         </div>
