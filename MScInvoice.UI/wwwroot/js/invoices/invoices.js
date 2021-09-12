@@ -142,6 +142,7 @@
                         this.sections.push({
                             id: section.id,
                             name: section.name,
+                            date: section.date,
                             inputs: [],
                             subSum: 0
                         });
@@ -264,6 +265,10 @@
         cancel() {
             this.editing = false;
         },
+        printInvoice() {
+            //window.location.href = "/PdfCreator/" + this.invoice.InvoiceId;
+            window.open("/PdfCreator/" + this.invoice.InvoiceId);
+        },
         updateInvoice() {
             this.loading = true;
 
@@ -284,6 +289,7 @@
                 sections2.push(
                     {
                         Name: section.name,
+                        Date: section.date,
                         Items: items2
                     }
                 )

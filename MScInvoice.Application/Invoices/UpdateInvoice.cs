@@ -32,6 +32,8 @@ namespace MScInvoice.Application.Invoices
         public class Sections
         {
             public string Name { get; set; }
+
+            public DateTime Date { get; set; }
             public List<Items> Items { get; set; }
         }
 
@@ -96,10 +98,12 @@ namespace MScInvoice.Application.Invoices
 
                 await _context.SaveChangesAsync();
             }
-
+            
             var deleteSections = _context.InvoiceSections.Where(x => x.InvoiceId == request.InvoiceId);
 
-            _context.InvoiceSections.RemoveRange(deleteSections);
+           
+
+           _context.InvoiceSections.RemoveRange(deleteSections);
             await _context.SaveChangesAsync();
 
             foreach (var section in request.Sections)
@@ -133,13 +137,21 @@ namespace MScInvoice.Application.Invoices
                 }
             }
 
-
+            
             var sections = new InvoiceSection();
             var items = new List<InvoiceItem>();
             foreach (var section in request.Sections)
             {
+                string sectionDate = section.Date.ToString();
                 sections.InvoiceId = request.InvoiceId;
-                sections.Date = DateTime.Now;
+               if(DateTime.Equals(section.Date, new DateTime(1, 1, 1, 0, 0, 0)))
+               {
+                    sections.Date = DateTime.Now;
+               }
+               else
+               {
+                    sections.Date = section.Date;
+               }
                 sections.Name = section.Name;
 
                 _context.InvoiceSections.Add(sections);

@@ -59,7 +59,9 @@ namespace MScInvoice.Application.Invoices
 
         public async Task<Response> Do(Request request)
         {
-            
+           
+
+
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var todayDate = DateTime.Now;

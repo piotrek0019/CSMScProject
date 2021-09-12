@@ -97,6 +97,7 @@
 
                         <ul>
                             <li>
+                                <input hidden type="text" v-model="section.date">
                                 <label class="label">Section Name</label>
                                 <div class="control">
                                     <input class="input" type="text" v-model="section.name">
@@ -183,6 +184,7 @@
                 <button v-if="!invoice.InvoiceId" class="button is-link" @@click="createInvoice">Save invoice</button>
                 <button class="button" @@click="cancel">Cancel</button>
                 <button v-if="invoice.InvoiceId" class="button is-link" @@click="updateInvoice">Update invoice</button>
+                <button class="button" @@click="printInvoice">Print</button>
             </div>
         </div>
         <div v-if="!editing">

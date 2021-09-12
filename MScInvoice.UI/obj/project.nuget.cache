@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8zYWx+eJKUJ6mRqu8x5I+B3dBEk+31WGI0t0lHjLSBTbp8CKkTYXT6T7j9EyYKOesZu7KQZqyWkypJpORRdEng==",
+  "dgSpecHash": "B5sT0UL2Vcc7y8QlbrqZDcjRrBpCMpVx4Ax2XRD3gqm2Dj5QqARglXL8TWYlY5dnXCpVh+vSay4SarrRjZn7Jg==",
   "success": true,
   "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\piotr\\.nuget\\packages\\dinktopdf\\1.0.8\\dinktopdf.1.0.8.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",
