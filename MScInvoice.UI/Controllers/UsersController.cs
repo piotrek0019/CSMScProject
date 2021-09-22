@@ -5,6 +5,7 @@ using MScInvoice.Application.Customers;
 using MScInvoice.Application.Items;
 using MScInvoice.Application.UsersAdmin;
 using MScInvoice.Database;
+using MScInvoice.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,10 @@ namespace MScInvoice.UI.Controllers
     public class UsersController : Controller
     {
         private CreateUser _createUser;
-        private UserManager<IdentityUser> _userManager;
-        private IPasswordHasher<IdentityUser> _passwordHash;
+        private UserManager<MyUser> _userManager;
+        private IPasswordHasher<MyUser> _passwordHash;
 
-        public UsersController(CreateUser createUser, UserManager<IdentityUser> userManager, IPasswordHasher<IdentityUser> passwordHash)
+        public UsersController(CreateUser createUser, UserManager<MyUser> userManager, IPasswordHasher<MyUser> passwordHash)
         {
             _createUser = createUser;
             _userManager = userManager;

@@ -12,6 +12,9 @@ namespace MScInvoice.Domain.Models
         public int ItemId { get; set; }
         public Item Item { get; set; }
         public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal Tax { get; set; }
+        public string Description { get; set; }
 
     }
 }

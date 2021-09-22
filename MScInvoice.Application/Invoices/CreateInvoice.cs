@@ -26,12 +26,14 @@ namespace MScInvoice.Application.Invoices
             public int ItemId { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
             public int Quantity { get; set; }
         }
 
         public class Sections
         {
             public string Name { get; set; }
+            public DateTime Date { get; set; }
             public List<Items> Items { get; set; }
         }
 
@@ -65,26 +67,35 @@ namespace MScInvoice.Application.Invoices
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var todayDate = DateTime.Now;
-
+            
             var invoiceNumberMonth = _context.Invoices.Where(x => x.Date.Year == todayDate.Year && x.Date.Month == todayDate.Month && x.MyUserId == userId).ToList();
 
             var invoiceNumbers = new List<string>();
+            string invoiceNumber;
             string[] number;
 
        
-
-
-            foreach(var date in invoiceNumberMonth)
+            if(invoiceNumberMonth.Count != 0)
             {
-               
-                number = date.InvoiceNo.Split('/');
-                invoiceNumbers.Add(number[3]);
+                foreach (var date in invoiceNumberMonth)
+                {
+
+                    number = date.InvoiceNo.Split('/');
+                    invoiceNumbers.Add(number[3]);
+                }
+
+                int inHiNum = int.Parse(invoiceNumbers.Max(x => x));
+
+                invoiceNumber = DateTime.Now.ToString("yyyy'/'MM") + "/INV/" + (inHiNum + 1);
             }
+            else
+            {
+                invoiceNumber = DateTime.Now.ToString("yyyy'/'MM") + "/INV/" + 1;
+            }
+            //geting highest invoice number within current month
+           
 
-            int inHiNum = int.Parse(invoiceNumbers.Max(x => x));
-
-            string invoiceNumber = DateTime.Now.ToString("yyyy'/'MM") + "/INV/" + (inHiNum + 1);
-
+            //adding new customer if doesn't exist 
             if (request.CustomerId == 0)
             {
                 var customer = new Customer
@@ -102,6 +113,8 @@ namespace MScInvoice.Application.Invoices
                 await _context.SaveChangesAsync();
                 request.CustomerId = customer.Id;
             }
+            
+            //updating customer (todo: adding condtion if customer changed)
             if (request.CustomerId != 0)
             {
                 var customer = _context.Customers.FirstOrDefault(x => x.Id == request.CustomerId);
@@ -120,6 +133,7 @@ namespace MScInvoice.Application.Invoices
 
             foreach (var section in request.Sections)
             {
+                //adding new item if doesn't exist 
                 foreach (var item in section.Items)
                 {
                     if (item.ItemId == 0)
@@ -128,7 +142,8 @@ namespace MScInvoice.Application.Invoices
                         {
                             Name = item.Name,
                             Price = item.Price,
-                            MyUserId = userId
+                            MyUserId = userId,
+                            Tax = item.Tax
 
                         };
 
@@ -138,18 +153,19 @@ namespace MScInvoice.Application.Invoices
                     }
 
                     var itemDb = _context.Items.FirstOrDefault(x => x.Id == item.ItemId);
-
-                    if (itemDb.Name != item.Name || itemDb.Price != item.Price)
+                    //updating item if changed 
+                    if (itemDb.Name != item.Name || itemDb.Price != item.Price || itemDb.Tax != item.Tax)
                     {
                         itemDb.Name = item.Name;
                         itemDb.Price = item.Price;
+                        itemDb.Tax = item.Tax;
 
                         await _context.SaveChangesAsync();
                     }
                 }
             }
 
-         
+            //adding an invoice to table invoice
             var invoice = new Invoice
             {
                 InvoiceNo = invoiceNumber,
@@ -165,6 +181,8 @@ namespace MScInvoice.Application.Invoices
 
             var sections = new InvoiceSection();
             var items = new List<InvoiceItem>();
+
+            //adding sections related to the above invoice
             foreach (var section in request.Sections)
             {
                 sections.InvoiceId = invoice.Id;
@@ -173,14 +191,16 @@ namespace MScInvoice.Application.Invoices
 
                 _context.InvoiceSections.Add(sections);
                 await _context.SaveChangesAsync();
-
-                foreach(var item in section.Items)
+                //adding items related to the above each section
+                foreach (var item in section.Items)
                 {
                     items.Add(new InvoiceItem
                     {
                         InvoiceSectionId = sections.Id,
                         ItemId = item.ItemId,
-                        Quantity = item.Quantity
+                        Quantity = item.Quantity,
+                        Price = item.Price,
+                        Tax = item.Tax
                     });
                 }
                 _context.InvoiceItems.AddRange(items);

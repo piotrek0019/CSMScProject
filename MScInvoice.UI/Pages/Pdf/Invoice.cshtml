@@ -35,8 +35,13 @@
             <div class="clear" style="display: block; height: 30px;"></div>
             <div>
                 <div class="left">
-                    To be implemented User's<br />
-                    Name and so on
+                    @Model.Invoice.AccountName<br />
+                    @Model.Invoice.AccountAddress1<br />
+                    @Model.Invoice.AccountAddress2<br />
+                    @Model.Invoice.AccountCity<br />
+                    @Model.Invoice.AccountPostCode<br />
+                    @Model.Invoice.AccountNumber1
+                    
                 </div>
 
                 <div class="right">
@@ -71,57 +76,65 @@
             </tr>
             @{
                 decimal subTotal = 0;
-                decimal total = 0;
+                decimal subTotalTax = 0;
                 var SumOfSections = new List<decimal>();
-                
+                var SumOfSectionsTax = new List<decimal>();
+
 
                 foreach (var s in Model.Invoice.InvoiceSections)
                 {
 
                     subTotal = 0;
+                    subTotalTax = 0;
 
-                <tr class="heading">
-                    <td>@s.Name</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="heading">
-                    <td>Item Name</td>
-                    <td>Price</td>
-                    <td>Qty</td>
-                    <td>Total</td>
-                </tr>
+                    <tr class="heading">
+                        <td>@s.Name</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="heading">
+                        <td>Item Name</td>
+                        <td>Price</td>
+                        <td>Tax</td>
+                        <td>Qty</td>
+                        <td>Total</td>
+                    </tr>
 
                     foreach (var i in s.InvoiceItem)
                     {
-                    <tr class="item">
-                        <td>@i.ItemName</td>
-                        <td>@i.ItemPrice</td>
-                        <td>@i.Quantity</td>
-                        <td>@(i.ItemPrice * i.Quantity)</td>
-                    </tr>
+                        <tr class="item">
+                            <td>@i.ItemName</td>
+                            <td>@i.ItemPrice</td>
+                            <td>@i.ItemTax</td>
+                            <td>@i.Quantity</td>
+                            <td>@(i.ItemPrice * i.Quantity)</td>
+                        </tr>
                         subTotal += (i.ItemPrice * i.Quantity);
+                        subTotalTax += ((i.ItemPrice * i.Quantity) * ((100 + i.ItemTax ) / 100));
                     }
 
 
-                <tr class="item">
-                    <td></td>
-                    <td></td>
-                    <td>Sub Total:</td>
-                    <td>@subTotal</td>
-                </tr>
+                    <tr class="item">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Sub Total:</td>
+                        <td>@subTotal</td>
+                    </tr>
                     SumOfSections.Add(subTotal);
-                    total += subTotal;
+                    SumOfSectionsTax.Add(subTotalTax);
                 }
-                }
-            
-            <tr class="total">
-                <td></td>
-                <td></td>
-                <td>Total:</td>
-                <td>@total</td>
-            </tr>
+            }
+
+        <tr class="item">
+            <th>Section Name</th>
+            <th></th>
+            <th>Date</th>
+            <th>Sum</th>
+            <th>Sum With Tax</th>
+        </tr>
             @{
                 int index = 0;
                 foreach (var s in Model.Invoice.InvoiceSections)
@@ -129,12 +142,20 @@
                     <tr class="heading">
                         <td>@s.Name</td>
                         <td></td>
-                        <td>@s.Date</td>
+                        <td>@s.Date.ToString("dd/MM/yyyy")</td>
                         <td>@SumOfSections[index]</td>
+                        <td>@SumOfSectionsTax[index].ToString("0.00")</td>
                     </tr>
-                   index += 1;
-                    }
+                    index += 1;
                 }
+            }
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td>@SumOfSections.Sum()</td>
+                <td>@SumOfSectionsTax.Sum().ToString("0.00")</td>
+            </tr>
 
 
 
@@ -142,7 +163,7 @@
 
 
 
-            </table>
+        </table>
     </div>
 </body>
 </html>

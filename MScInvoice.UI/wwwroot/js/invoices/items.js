@@ -8,7 +8,8 @@
         itemModel: {
             id: 0,
             name: "Item Name",
-            price: 1.99
+            price: 1.99,
+            tax: 20
         },
         items: []
     },
@@ -25,7 +26,8 @@
                     this.itemModel = {
                         id: item.id,
                         name: item.name,
-                        price: item.price
+                        price: item.price,
+                        tax: item.tax
                     }
                 })
                 .catch(err => {

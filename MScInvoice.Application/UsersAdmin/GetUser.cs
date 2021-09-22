@@ -9,9 +9,9 @@ namespace MScInvoice.Application.UsersAdmin
 {
     public class GetUser
     {
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
 
-        public GetUser(UserManager<IdentityUser> userManager)
+        public GetUser(UserManager<MScInvoice.Domain.Models.MyUser> userManager)
         {
             _userManager = userManager;
         }

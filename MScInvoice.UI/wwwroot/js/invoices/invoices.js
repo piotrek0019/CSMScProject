@@ -9,7 +9,7 @@
         objectIndex: 0,
         editing: false,
         sections: [{
-                name: "Section " + "1",
+            name: "Section 1",
             inputs: [],
             subSum: 0
          }],
@@ -35,7 +35,8 @@
         selectedItem: {
             id: 0,
             name: null,
-            price: null
+            price: null,
+            tax: null
         },
         InvoiceVM: {
             InvoiceId: null,
@@ -75,7 +76,31 @@
                 return sumTotal2.toFixed(2)
             }
             return 0;
+        },
+        totalTax: function () {
+            var totalTax2 = 0;
+            this.sections.forEach(section => {
+                totalTax2 += section.inputs.reduce(function (previousValue, currentValue) {
+                    totalLineTax = parseFloat(currentValue.totalLineTax);
+                    if (!isNaN(totalLineTax)) {
+                        return previousValue + totalLineTax;
+                    }
+                }, 0);
+            });
+
+            if (!isNaN(totalTax2)) {
+                return totalTax2.toFixed(2)
+            }
+            return 0;
+        },
+        totalPlusTax: function () {
+            var totalPlusTax2 = (parseFloat(this.sumTotal) + parseFloat(this.totalTax))
+            if (!isNaN(totalPlusTax2)) {
+                return totalPlusTax2.toFixed(2);
+            }
+            return 0;
         }
+        
     },
     methods: {
 
@@ -155,7 +180,9 @@
                                 quantity: item.quantity,
                                 name: item.itemName,
                                 price: item.itemPrice,
-                                totalLine: item.itemPrice * item.quantity
+                                tax: item.itemTax,
+                                totalLine: item.itemPrice * item.quantity,
+                                totalLineTax: ((item.itemPrice * item.quantity) * (item.itemTax / 100))
                             });
                         });
 
@@ -208,6 +235,7 @@
                         ItemId: input.id,
                         Name: input.name,
                         Price: input.price,
+                        Tax: input.tax,
                         Quantity: input.quantity
                     })
                 })
@@ -257,7 +285,7 @@
             this.invoice = {};
             this.selectedPayMethod = this.payMethods[0];
             this.sections = [{
-                name: "Section " + "1",
+                name: "Section 1",
                 inputs: [],
                 subSum: 0
             }];
@@ -275,17 +303,19 @@
             var sections2 = [];
             var items2 = [];
             this.sections.forEach(section => {
-
+               
                 section.inputs.forEach(input => {
                     items2.push({
                         ItemId: input.id,
                         Name: input.name,
                         Price: input.price,
+                        Tax: input.tax,
                         Quantity: input.quantity
                     })
+                   
                 })
                 console.log("items2");
-                console.log(items2)
+                console.log(items2);
                 sections2.push(
                     {
                         Name: section.name,
@@ -351,8 +381,10 @@
                 id: this.selectedItem.id,
                 name: this.selectedItem.name,
                 price: this.selectedItem.price,
+                tax: this.selectedItem.tax,
                 quantity: 1,
-                totalLine: this.selectedItem.price * 1
+                totalLine: this.selectedItem.price * 1,
+                totalLineTax: ((this.selectedItem.price * 1) * (this.selectedItem.tax / 100))
             });
 
             subSum2 = this.sections[index].inputs.reduce(function (previousValue, currentValue) {
@@ -369,12 +401,19 @@
         deleteItemFromInvoice(indexSection, indexItem) {
             this.sections[indexSection].inputs.splice(indexItem, 1)
         },
+        deleteSectionFromInvoice(indexSection) {
+            this.sections.splice(indexSection, 1)
+        },
         calculateTotalLine(input, indexSection) {
             var total = parseFloat(input.price) * parseFloat(input.quantity);
+            var totalTax = (parseFloat(input.price) * parseFloat(input.quantity)) * (parseFloat(input.tax) / 100);
 
            
             if (!isNaN(total)) {
                 input.totalLine = total.toFixed(2);
+            }
+            if (!isNaN(totalTax)) {
+                input.totalLineTax = totalTax;
             }
 
             ///////////////////////////////////////////////////////////////

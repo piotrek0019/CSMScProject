@@ -25,7 +25,7 @@
 
     <partial name="_CookieConsentPartial" />
     <div class="container">
-        <a asp-page="/Invoices/Items">Admin</a>
+        <a asp-page="/Invoices/Invoices">Admin</a>
         <a asp-page="/Accounts/Login">Sign In</a>
         <a asp-controller="Account" asp-action="Logout">Sign Out</a>
         <div class="columns">
@@ -33,22 +33,21 @@
                 <div class="menu">
                     @if ((await authService.AuthorizeAsync(User, "User")).Succeeded)
                     {
-                        <p class="menu-label">Invoices Menu</p>
-                        <ul class="menu-list">
-                            <li><a asp-page="/Invoices/Items">Items</a></li>
-                            <li><a asp-page="/Invoices/Invoices">Invoices</a></li>
-                            <li><a asp-page="/Invoices/Customers">Customers</a></li>
-                            <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
-                        </ul>
-                    }
+        <p class="menu-label">Invoices Menu</p>
+        <ul class="menu-list">
+            <li><a asp-page="/MyAccount/MyUser">My Account</a></li>
+            <li><a asp-page="/Invoices/Items">Items</a></li>
+            <li><a asp-page="/Invoices/Invoices">Invoices</a></li>
+            <li><a asp-page="/Invoices/Customers">Customers</a></li>
+            <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
+        </ul>}
                     @if ((await authService.AuthorizeAsync(User, "Admin")).Succeeded)
                     {
-                        <p class="menu-label">Admin Menu</p>
+        <p class="menu-label">Admin Menu</p>
                         <ul class="menu-list">
                             <li><a asp-page="/Accounts/Users">Configure Users</a></li>
 
-                        </ul>
-                    }
+                        </ul>}
                     <p class="menu-label"></p>
                     <ul class="menu-list">
                         <li><a asp-page="/Index">Back to Main</a></li>

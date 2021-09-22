@@ -9,7 +9,7 @@ namespace MScInvoice.Domain.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string Description { get; set; }
+        public decimal Tax { get; set; }
         public string MyUserId { get; set; }
         public MyUser MyUser { get; set; }
         public ICollection<InvoiceItem> InvoiceItem { get; set; }

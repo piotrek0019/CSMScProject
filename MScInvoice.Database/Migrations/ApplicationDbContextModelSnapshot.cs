@@ -247,11 +247,17 @@ namespace MScInvoice.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
                     b.Property<int>("InvoiceSectionId");
 
                     b.Property<int>("ItemId");
 
+                    b.Property<decimal>("Price");
+
                     b.Property<int>("Quantity");
+
+                    b.Property<decimal>("Tax");
 
                     b.HasKey("Id");
 
@@ -287,13 +293,13 @@ namespace MScInvoice.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
-
                     b.Property<string>("MyUserId");
 
                     b.Property<string>("Name");
 
                     b.Property<decimal>("Price");
+
+                    b.Property<decimal>("Tax");
 
                     b.HasKey("Id");
 
@@ -323,6 +329,17 @@ namespace MScInvoice.Database.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("Address1");
+
+                    b.Property<string>("Address2");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Number1");
+
+                    b.Property<string>("PostCode");
 
                     b.ToTable("MyUser");
 

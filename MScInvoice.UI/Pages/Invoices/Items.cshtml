@@ -34,6 +34,10 @@
             <div class="control">
                 <input class="input" v-model="itemModel.price" />
             </div>
+            <label class="label">Item Tax</label>
+            <div class="control">
+                <input class="input" v-model="itemModel.tax" />
+            </div>
             <button class="button is-success" @@click="createItem" v-if="!itemModel.id">Create Item</button>
             <button class="button is-warning" @@click="updateItem" v-else>Update Item</button>
             <button class="button" @@click="cancel">Cancel</button>

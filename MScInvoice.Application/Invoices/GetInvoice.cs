@@ -37,6 +37,7 @@ namespace MScInvoice.Application.Invoices
             public string ItemName { get; set; }
             public string ItemDescription { get; set; }
             public decimal ItemPrice { get; set; }
+            public decimal ItemTax { get; set; }
             public string ItemMyUserId { get; set; }
         }
         public class Items
@@ -44,7 +45,6 @@ namespace MScInvoice.Application.Invoices
             public int Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
-            public string Description { get; set; }
             public string MyUserId { get; set; }
         }
         public class InvoiceViewModel
@@ -61,6 +61,12 @@ namespace MScInvoice.Application.Invoices
             public string CustomerCity { get; set; }
             public string CustomerPostCode { get; set; }
             public string CustomerNumber1 { get; set; }
+            public string AccountName { get; set; }
+            public string AccountAddress1 { get; set; }
+            public string AccountAddress2 { get; set; }
+            public string AccountPostCode { get; set; }
+            public string AccountCity { get; set; }
+            public string AccountNumber1 { get; set; }
             public int PayMethodId { get; set; }
             public string PayMethodName { get; set; }
             public IEnumerable<InvoiceSections> InvoiceSections { get; set; }
@@ -72,6 +78,7 @@ namespace MScInvoice.Application.Invoices
         {
             var invoice = _context.Invoices
                 .Where(x => x.Id == id)
+                .Include(x => x.MyUser)
                 .Include(x => x.InvoiceSection)
                 .ThenInclude(x => x.InvoiceItem)
                 .ThenInclude(x => x.Item)
@@ -92,6 +99,13 @@ namespace MScInvoice.Application.Invoices
                     CustomerPostCode = x.Customer.PostCode,
                     CustomerNumber1 = x.Customer.Number1,
 
+                    AccountName = x.MyUser.Name,
+                    AccountAddress1 = x.MyUser.Address1,
+                    AccountAddress2 = x.MyUser.Address2,
+                    AccountPostCode = x.MyUser.PostCode,
+                    AccountCity = x.MyUser.City,
+                    AccountNumber1 = x.MyUser.Number1,
+
                     PayMethodId = x.PayMethodId,
                     PayMethodName = x.PayMethod.Name,
 
@@ -109,8 +123,8 @@ namespace MScInvoice.Application.Invoices
                                     ItemId = d.ItemId,
                                     Quantity = d.Quantity,
                                     ItemName = d.Item.Name,
-                                    ItemDescription = d.Item.Description,
-                                    ItemPrice = d.Item.Price,
+                                    ItemPrice = d.Price,
+                                    ItemTax = d.Tax,
                                     ItemMyUserId = d.Item.MyUserId
                                 })
                         })

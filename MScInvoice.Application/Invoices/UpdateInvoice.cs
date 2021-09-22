@@ -26,6 +26,7 @@ namespace MScInvoice.Application.Invoices
             public int ItemId { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
             public int Quantity { get; set; }
         }
 
@@ -108,6 +109,7 @@ namespace MScInvoice.Application.Invoices
 
             foreach (var section in request.Sections)
             {
+                //adding new item if doesn't exist 
                 foreach (var item in section.Items)
                 {
                     if (item.ItemId == 0)
@@ -116,7 +118,8 @@ namespace MScInvoice.Application.Invoices
                         {
                             Name = item.Name,
                             Price = item.Price,
-                            MyUserId = userId
+                            MyUserId = userId,
+                            Tax = item.Tax
 
                         };
 
@@ -126,25 +129,36 @@ namespace MScInvoice.Application.Invoices
                     }
 
                     var itemDb = _context.Items.FirstOrDefault(x => x.Id == item.ItemId);
-
+                    //updating item if changed 
                     if (itemDb.Name != item.Name || itemDb.Price != item.Price)
                     {
                         itemDb.Name = item.Name;
                         itemDb.Price = item.Price;
+                        itemDb.Tax = item.Tax;
 
                         await _context.SaveChangesAsync();
                     }
                 }
             }
+            //update invoice table
+            var invoiceDb = _context.Invoices.FirstOrDefault(x => x.Id == request.InvoiceId);
 
-            
+            invoiceDb.CustomerId = request.CustomerId;
+            invoiceDb.PayMethodId = request.PayMethodId;
+
+            await _context.SaveChangesAsync();
+
             var sections = new InvoiceSection();
             var items = new List<InvoiceItem>();
             foreach (var section in request.Sections)
             {
+
+                //adding or updating passing existing sections to invoice
                 string sectionDate = section.Date.ToString();
                 sections.InvoiceId = request.InvoiceId;
-               if(DateTime.Equals(section.Date, new DateTime(1, 1, 1, 0, 0, 0)))
+                sections.Name = section.Name;
+
+                if (DateTime.Equals(section.Date, new DateTime(1, 1, 1, 0, 0, 0)))
                {
                     sections.Date = DateTime.Now;
                }
@@ -152,18 +166,21 @@ namespace MScInvoice.Application.Invoices
                {
                     sections.Date = section.Date;
                }
-                sections.Name = section.Name;
+                
 
                 _context.InvoiceSections.Add(sections);
                 await _context.SaveChangesAsync();
 
                 foreach (var item in section.Items)
                 {
+                    //adding or updating passing existing items to sections
                     items.Add(new InvoiceItem
                     {
                         InvoiceSectionId = sections.Id,
                         ItemId = item.ItemId,
-                        Quantity = item.Quantity
+                        Quantity = item.Quantity,
+                        Price = item.Price,
+                        Tax = item.Tax
                     });
                 }
                 _context.InvoiceItems.AddRange(items);

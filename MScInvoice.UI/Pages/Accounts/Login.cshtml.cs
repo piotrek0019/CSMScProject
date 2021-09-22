@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MScInvoice.Domain.Models;
 
 namespace MScInvoice.UI.Pages.Accounts
 {
     public class LoginModel : PageModel
     {
-        private SignInManager<IdentityUser> _signInManager;
+        private SignInManager<MyUser> _signInManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager)
+        public LoginModel(SignInManager<MyUser> signInManager)
         {
             _signInManager = signInManager;
         }
@@ -29,7 +30,7 @@ namespace MScInvoice.UI.Pages.Accounts
 
             if (result.Succeeded)
             {
-                return RedirectToPage("/Invoices/Items");
+                return RedirectToPage("/Invoices/Invoices");
             }
             else
                 return Page();

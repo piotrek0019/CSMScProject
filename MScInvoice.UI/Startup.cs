@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MScInvoice.Application.UsersAdmin;
 using MScInvoice.Database;
+using MScInvoice.Domain.Models;
 
 namespace MScInvoice.UI
 {
@@ -42,7 +43,7 @@ namespace MScInvoice.UI
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<MyUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
@@ -71,6 +72,7 @@ namespace MScInvoice.UI
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Invoices");
+                    options.Conventions.AuthorizeFolder("/MyAccount");
                     options.Conventions.AuthorizePage("/Accounts/Users", "Admin");
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

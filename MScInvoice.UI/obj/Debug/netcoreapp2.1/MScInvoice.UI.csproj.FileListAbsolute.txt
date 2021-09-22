@@ -156,3 +156,4 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\D
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.genruntimeconfig.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\libwkhtmltox.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\Pdf\Invoice.cshtml.g.cs
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\MyAccount\MyUser.cshtml.g.cs

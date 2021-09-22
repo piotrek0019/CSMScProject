@@ -27,6 +27,7 @@ namespace MScInvoice.Application.Items
             {
                 Name = request.Name,
                 Price = request.Price,
+                Tax = request.Tax,
                 MyUserId = userId
                 
             };
@@ -38,7 +39,8 @@ namespace MScInvoice.Application.Items
             {
                 Id = item.Id,
                 Name = item.Name,
-                Price = item.Price
+                Price = item.Price,
+                Tax = item.Tax
             };
         }
 
@@ -46,6 +48,7 @@ namespace MScInvoice.Application.Items
         {
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
         }
 
         public class Response
@@ -53,6 +56,7 @@ namespace MScInvoice.Application.Items
             public int Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
             public string MyUserId { get; set; }
 
         }

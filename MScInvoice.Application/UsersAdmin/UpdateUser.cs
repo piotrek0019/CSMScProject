@@ -9,10 +9,10 @@ namespace MScInvoice.Application.UsersAdmin
 {
     public class UpdateUser
     {
-        private UserManager<IdentityUser> _userManager;
-        private IPasswordHasher<IdentityUser> _passwordHash;
+        private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
+        private IPasswordHasher<MScInvoice.Domain.Models.MyUser> _passwordHash;
 
-        public UpdateUser(UserManager<IdentityUser> userManager, IPasswordHasher<IdentityUser> passwordHash)
+        public UpdateUser(UserManager<MScInvoice.Domain.Models.MyUser> userManager, IPasswordHasher<MScInvoice.Domain.Models.MyUser> passwordHash)
         {
             _userManager = userManager;
             _passwordHash = passwordHash;

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MScInvoice.Database;
+using MScInvoice.Domain.Models;
 
 namespace MScInvoice.UI
 {
@@ -25,17 +26,17 @@ namespace MScInvoice.UI
                 using (var scope = host.Services.CreateScope())
                 {
                     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<MyUser>>();
 
                     context.Database.EnsureCreated();
 
                     if(!context.Users.Any())
                     {
-                        var adminUser = new IdentityUser()
+                        var adminUser = new MyUser()
                         {
                             UserName = "Admin"
                         };
-                        var testUser = new IdentityUser()
+                        var testUser = new MyUser()
                         {
                             UserName = "Test"
                         };

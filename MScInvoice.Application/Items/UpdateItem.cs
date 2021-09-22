@@ -23,13 +23,15 @@ namespace MScInvoice.Application.Items
 
             item.Name = request.Name;
             item.Price = request.Price;
+            item.Tax = request.Tax;
 
             await _context.SaveChangesAsync();
             return new Response
             {
                 Id = item.Id,
                 Name = item.Name,
-                Price = item.Price
+                Price = item.Price,
+                Tax = item.Tax
             };
         }
 
@@ -38,6 +40,7 @@ namespace MScInvoice.Application.Items
             public int Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
         }
 
         public class Response
@@ -45,6 +48,7 @@ namespace MScInvoice.Application.Items
             public int Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
         }
 
     }

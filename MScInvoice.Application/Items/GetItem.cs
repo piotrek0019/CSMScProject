@@ -20,7 +20,8 @@ namespace MScInvoice.Application.Items
             {
                 Id = x.Id,
                 Name = x.Name,
-                Price = x.Price
+                Price = x.Price,
+                Tax = x.Tax
             })
             .FirstOrDefault();
         public class ItemViewModel
@@ -28,6 +29,7 @@ namespace MScInvoice.Application.Items
             public int Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public decimal Tax { get; set; }
         }
     }
 }

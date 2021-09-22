@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MScInvoice.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace MScInvoice.UI.Controllers
 {
     public class AccountController : Controller
     {
-        private SignInManager<IdentityUser> _signInManager;
+        private SignInManager<MyUser> _signInManager;
       
 
-        public AccountController(SignInManager<IdentityUser> signInManager)
+        public AccountController(SignInManager<MyUser> signInManager)
         {
             _signInManager = signInManager;
             

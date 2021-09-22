@@ -10,9 +10,9 @@ namespace MScInvoice.Application.UsersAdmin
 {
     public class CreateUser
     {
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
 
-        public CreateUser(UserManager<IdentityUser> userManager)
+        public CreateUser(UserManager<MScInvoice.Domain.Models.MyUser> userManager)
         {
             _userManager = userManager;
         }
@@ -30,7 +30,7 @@ namespace MScInvoice.Application.UsersAdmin
 
         public async Task<Response> Do(Request request)
         {
-            var User = new IdentityUser()
+            var User = new MScInvoice.Domain.Models.MyUser()
             {
                 UserName = request.UserName
             };

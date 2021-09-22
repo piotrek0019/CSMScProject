@@ -99,9 +99,19 @@
                             <li>
                                 <input hidden type="text" v-model="section.date">
                                 <label class="label">Section Name</label>
-                                <div class="control">
-                                    <input class="input" type="text" v-model="section.name">
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="section.name">
+                                        </div>
+                                    </div>
+                                    <div class="column is-2">
+                                        <div class="buttons is-right">
+                                            <button class="button is-info is-light" @@click="deleteSectionFromInvoice(indexSection)">Delete Section</button>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </li>
                             <li>
                                 <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
@@ -110,6 +120,9 @@
                                     </div>
                                     <div class="column is-2">
                                         <label class="label">Price</label>
+                                    </div>
+                                    <div class="column is-2">
+                                        <label class="label">Tax</label>
                                     </div>
                                     <div class="column is-2">
                                         <label class="label">Quantity</label>
@@ -134,7 +147,12 @@
                                         <div class="control">
                                             <input class="input" type="text" v-model="input.price" @@change="calculateTotalLine(input, indexSection)">
                                         </div>
+                                    </div><div class="column is-2">
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="input.tax" @@change="calculateTotalLine(input, indexSection)">
+                                        </div>
                                     </div>
+
                                     <div class="column is-2">
                                         <div class="control">
                                             <input class="input" type="text" v-model="input.quantity" @@change="calculateTotalLine(input, indexSection)">
@@ -165,6 +183,18 @@
                     <li>
                         <div class="level-right">
                             <p class="level-item"><strong>Total: {{sumTotal}}</strong></p>
+                        </div>
+                        <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+                    </li>
+                    <li>
+                        <div class="level-right">
+                            <p class="level-item"><strong>Total Tax: {{totalTax}}</strong></p>
+                        </div>
+                        <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
+                    </li>
+                    <li>
+                        <div class="level-right">
+                            <p class="level-item"><strong>Total With Tax: {{totalPlusTax}}</strong></p>
                         </div>
                         <div style="border-bottom: 1px solid #cecbcb; margin-bottom: 3px"></div>
                     </li>

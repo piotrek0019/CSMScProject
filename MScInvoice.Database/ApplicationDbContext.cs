@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MScInvoice.Database
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<MyUser>
     {
         private IHttpContextAccessor _httpContextAccessor;
 
