@@ -13,6 +13,7 @@ namespace MScInvoice.Domain.Models
         public int Id { get; set; }
         public string InvoiceNo { get; set; }
         public DateTime Date { get; set; }
+        public DateTime DueDate { get; set; }
         public string Description { get; set; }
         public string MyUserId { get; set; }
         public MyUser MyUser { get; set; }

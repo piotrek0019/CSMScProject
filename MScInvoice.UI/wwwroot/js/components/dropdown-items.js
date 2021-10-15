@@ -4,6 +4,7 @@
 
                 <!-- Dropdown Input -->
                 <input class="dropdown-input"
+                    autocomplete="off"
                   :name="name"
                   @focus="showOptions()"
                   @blur="exit()"

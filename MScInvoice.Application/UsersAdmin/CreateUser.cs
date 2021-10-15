@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MScInvoice.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,14 @@ namespace MScInvoice.Application.UsersAdmin
 {
     public class CreateUser
     {
-        private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
 
-        public CreateUser(UserManager<MScInvoice.Domain.Models.MyUser> userManager)
+        private UserManager<MyUser> _userManager;
+        private IPasswordHasher<MyUser> _passwordHash;
+
+        public CreateUser(UserManager<MyUser> userManager, IPasswordHasher<MyUser> passwordHash)
         {
             _userManager = userManager;
+            _passwordHash = passwordHash;
         }
 
         public class Request
@@ -30,13 +34,17 @@ namespace MScInvoice.Application.UsersAdmin
 
         public async Task<Response> Do(Request request)
         {
-            var User = new MScInvoice.Domain.Models.MyUser()
+
+            
+
+            var User = new MyUser()
             {
                 UserName = request.UserName
             };
-            
+
 
             await _userManager.CreateAsync(User, request.Password);
+            
 
             var userClaim = new Claim("Role", "User");
 

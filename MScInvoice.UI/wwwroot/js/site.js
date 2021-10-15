@@ -2,3 +2,9 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+new Vue({
+    el: '#app2',
+    data: {
+        showNav: false
+    }
+});

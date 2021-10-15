@@ -19,9 +19,10 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject-master\MScInvoice.D
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\bin\Debug\netcoreapp2.1\MScInvoice.Domain.deps.json
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\bin\Debug\netcoreapp2.1\MScInvoice.Domain.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\bin\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.csprojAssemblyReference.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.AssemblyInfoInputs.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.AssemblyInfo.cs
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.csproj.CoreCompileInputs.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.csproj.AssemblyReference.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Domain\obj\Debug\netcoreapp2.1\MScInvoice.Domain.GeneratedMSBuildEditorConfig.editorconfig

@@ -1,0 +1,55 @@
+﻿@inject IAuthorizationService authService
+@{
+
+   Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h3 class="has-text-centered">Admin Panel</h3>
+
+
+
+    <partial name="_CookieConsentPartial" />
+    <div class="container">
+
+        <div class="columns">
+            <div class="column is-3">
+                <div class="menu">
+                    @if ((await authService.AuthorizeAsync(User, "User")).Succeeded)
+                    {
+                    <p class="menu-label">Invoices Menu</p>
+                    <ul class="menu-list">
+                        <li><a asp-page="/MyAccount/MyUser">My Account</a></li>
+                        <li><a asp-page="/Invoices/Items">Items</a></li>
+                        <li><a asp-page="/Invoices/Invoices">Invoices</a></li>
+                        <li><a asp-page="/Invoices/Customers">Customers</a></li>
+                        <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
+                    </ul>}
+                    @if ((await authService.AuthorizeAsync(User, "Admin")).Succeeded)
+                    {
+                    <p class="menu-label">Admin Menu</p>
+                    <ul class="menu-list">
+                        <li><a asp-page="/Accounts/Users">Configure Users</a></li>
+
+                    </ul>}
+                    <p class="menu-label"></p>
+                    <ul class="menu-list">
+                        <li><a asp-page="/Index">Back to Main</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="column is-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+
+    
+</body>
+</html>

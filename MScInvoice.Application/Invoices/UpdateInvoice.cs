@@ -65,7 +65,7 @@ namespace MScInvoice.Application.Invoices
         {
 
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+            //adding new customer if doesn't exist
             if (request.CustomerId == 0)
             {
                 var customer = new Customer
@@ -84,7 +84,7 @@ namespace MScInvoice.Application.Invoices
                 request.CustomerId = customer.Id;
 
             }
-
+            //editing a customer
             if (request.CustomerId != 0)
             {
                 var customer = _context.Customers.FirstOrDefault(x => x.Id == request.CustomerId);

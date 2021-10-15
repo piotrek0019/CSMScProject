@@ -34,6 +34,7 @@ namespace MScInvoice.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
+            
         }
     }
 }

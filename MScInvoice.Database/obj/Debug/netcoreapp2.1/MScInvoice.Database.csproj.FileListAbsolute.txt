@@ -35,11 +35,11 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Domain.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csprojAssemblyReference.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.AssemblyInfoInputs.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.AssemblyInfo.cs
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.CoreCompileInputs.cache
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.CopyComplete
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.genruntimeconfig.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.AssemblyReference.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.GeneratedMSBuildEditorConfig.editorconfig

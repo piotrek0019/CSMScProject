@@ -104,7 +104,6 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject-master\MScInvoice.U
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject-master\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.genruntimeconfig.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\appsettings.Development.json
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\appsettings.json
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\MScInvoice.UI.deps.json
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\MScInvoice.UI.runtimeconfig.json
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\MScInvoice.UI.runtimeconfig.dev.json
@@ -118,7 +117,6 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\D
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\MScInvoice.Application.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\MScInvoice.Database.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.csprojAssemblyReference.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.AssemblyInfoInputs.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.AssemblyInfo.cs
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.csproj.CoreCompileInputs.cache
@@ -154,6 +152,11 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\D
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.genruntimeconfig.cache
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\libwkhtmltox.dll
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\Pdf\Invoice.cshtml.g.cs
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\MyAccount\MyUser.cshtml.g.cs
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\libwkhtmltox.dll
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\bin\Debug\netcoreapp2.1\Controllers\libwkhtmltox.dll
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.csproj.AssemblyReference.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\MyAccount\_MyAccountLayout.cshtml.g.cs
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\MyAccount\_ViewStart.cshtml.g.cs

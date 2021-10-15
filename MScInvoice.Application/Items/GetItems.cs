@@ -22,13 +22,15 @@ namespace MScInvoice.Application.Items
         public IEnumerable<ItemViewModel> Do()
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return _ctx.Items.ToList().Where(x => x.MyUserId == userId).Select(x => new ItemViewModel
+            //var userId = "1ea7e2ca-5310-414d-9cb4-8d4e61eb72e8";
+            var items =  _ctx.Items.Where(x => x.MyUserId == userId).Select(x => new ItemViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
                 Price = x.Price,
                 Tax = x.Tax
-            });
+            }).ToList();
+            return items;
         }
         public class ItemViewModel
         {

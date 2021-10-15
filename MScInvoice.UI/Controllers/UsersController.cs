@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace MScInvoice.UI.Controllers
 {
     [Route("[controller]")]
-    //[Authorize(Policy = "User")]
+    [Authorize(Policy = "Admin")]
     public class UsersController : Controller
     {
         private CreateUser _createUser;

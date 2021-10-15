@@ -1,11 +1,12 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using MScInvoice.Application.Classes;
+using MScInvoice.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,10 +26,11 @@ namespace MScInvoice.UI.Controllers
         [HttpGet("{id}")]
         public IActionResult CreatePDF(int id)
         {
+           
 
-            new CustomAssemblyLoadContext().LoadUnmanagedLibrary($"E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\libwkhtmltox.dll");
-            //var variab =  Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll");
-
+            CustomAssemblyLoadContext context = new CustomAssemblyLoadContext();
+            context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
+            
 
             var globalSettings = new GlobalSettings
             {
@@ -43,7 +45,7 @@ namespace MScInvoice.UI.Controllers
             var objectSettings = new ObjectSettings
             {
                 PagesCount = true,
-                Page = "http://localhost:44554/pdf/Invoice/" + id,
+                Page = "http://localhost:44554/Pdf/invoice/" + id,
                 WebSettings = {DefaultEncoding = "utf-8"},
                 HeaderSettings = { FontName = "Helvetica Neue", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
                 FooterSettings = { FontName = "Helvetica Neue", FontSize = 9, Line = true, Center = "Report Footer" }
@@ -59,7 +61,6 @@ namespace MScInvoice.UI.Controllers
 
             return File(file, "application/pdf");
 
-            //return Ok();
         }
     }
 }

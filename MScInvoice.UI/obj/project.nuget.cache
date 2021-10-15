@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B5sT0UL2Vcc7y8QlbrqZDcjRrBpCMpVx4Ax2XRD3gqm2Dj5QqARglXL8TWYlY5dnXCpVh+vSay4SarrRjZn7Jg==",
+  "dgSpecHash": "R0ag34liH+clTLELd+IH1FzseC+Lea1Ls8F43GWvPpV0UTIKuqGAPioqRcdJX82QIgguPN2UJQMclC1Rvy0eqg==",
   "success": true,
   "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj",
   "expectedPackageFiles": [
@@ -73,7 +73,7 @@
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\2.1.1\\microsoft.aspnetcore.nodeservices.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.owin\\2.1.1\\microsoft.aspnetcore.owin.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.1.1\\microsoft.aspnetcore.razor.2.1.1.nupkg.sha512",
-    "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.razor.design\\2.1.2\\microsoft.aspnetcore.razor.design.2.1.2.nupkg.sha512",
+    "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.razor.design\\2.1.1\\microsoft.aspnetcore.razor.design.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\2.1.1\\microsoft.aspnetcore.razor.language.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.1.1\\microsoft.aspnetcore.razor.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.responsecaching\\2.1.1\\microsoft.aspnetcore.responsecaching.2.1.1.nupkg.sha512",

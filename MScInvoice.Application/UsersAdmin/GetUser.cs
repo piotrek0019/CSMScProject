@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MScInvoice.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace MScInvoice.Application.UsersAdmin
 {
     public class GetUser
     {
-        private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
+        private UserManager<MyUser> _userManager;
 
-        public GetUser(UserManager<MScInvoice.Domain.Models.MyUser> userManager)
+        public GetUser(UserManager<MyUser> userManager)
         {
             _userManager = userManager;
         }
