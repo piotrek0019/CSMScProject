@@ -48,6 +48,7 @@ namespace MScInvoice.Application.Invoices
             public string CustomerCity { get; set; }
             public string CustomerPostCode { get; set; }
             public string CustomerNumber1 { get; set; }
+            public DateTime InvoiceDueDate { get; set; }
             public int PayMethodId { get; set; }
             public List<Sections> Sections { get; set; }
 
@@ -145,6 +146,7 @@ namespace MScInvoice.Application.Invoices
 
             invoiceDb.CustomerId = request.CustomerId;
             invoiceDb.PayMethodId = request.PayMethodId;
+            invoiceDb.DueDate = request.InvoiceDueDate;
 
             await _context.SaveChangesAsync();
 

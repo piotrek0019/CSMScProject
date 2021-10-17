@@ -17,13 +17,14 @@
                     @if ((await authService.AuthorizeAsync(User, "User")).Succeeded)
                     {
         <p class="menu-label">Invoices Menu</p>
-                        <ul class="menu-list">
-                            <li><a asp-page="/MyAccount/MyUser">My Account</a></li>
-                            <li><a asp-page="/Invoices/Items">Items</a></li>
-                            <li><a asp-page="/Invoices/Invoices">Invoices</a></li>
-                            <li><a asp-page="/Invoices/Customers">Customers</a></li>
-                            <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
-                        </ul>}
+        <ul class="menu-list">
+            <li><a asp-page="/MyAccount/MyUser">My Account</a></li>
+            <li><a asp-page="/Invoices/Items">Items</a></li>
+            <li><a asp-page="/Invoices/Invoices">Invoices</a></li>
+            <li><a asp-page="/Invoices/Customers">Customers</a></li>
+            <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
+            <li><a asp-page="/Invoices/CustomerStats">Stats</a></li>
+        </ul>}
                     @if ((await authService.AuthorizeAsync(User, "Admin")).Succeeded)
                     {
         <p class="menu-label">Admin Menu</p>

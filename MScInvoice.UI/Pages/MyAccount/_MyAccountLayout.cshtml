@@ -27,6 +27,7 @@
                         <li><a asp-page="/Invoices/Invoices">Invoices</a></li>
                         <li><a asp-page="/Invoices/Customers">Customers</a></li>
                         <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
+                        <li><a asp-page="/Invoices/CustomerStats">Stats</a></li>
                     </ul>}
                     @if ((await authService.AuthorizeAsync(User, "Admin")).Succeeded)
                     {

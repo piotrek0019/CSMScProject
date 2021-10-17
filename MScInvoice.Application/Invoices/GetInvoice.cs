@@ -52,6 +52,7 @@ namespace MScInvoice.Application.Invoices
             public int Id { get; set; }
             public string InvoiceNo { get; set; }
             public string Date { get; set; }
+            public string InvoiceDueDate { get; set; }
             public string Description { get; set; }
             public string MyUserId { get; set; }
             public int CustomerId { get; set; }
@@ -86,7 +87,9 @@ namespace MScInvoice.Application.Invoices
                 {
                     Id = x.Id,
                     InvoiceNo = x.InvoiceNo,
-                    Date = x.Date.ToString("dd/MM/yyyy"),
+                    Date = x.Date.ToString("yyyy-MM-dd"),
+                    InvoiceDueDate = x.DueDate.ToString("yyyy-MM-dd"),
+
                     Description = x.Description,
 
                     MyUserId = x.MyUserId,

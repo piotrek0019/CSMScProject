@@ -40,4 +40,3 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Applicat
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Application\obj\Debug\netcoreapp2.1\MScInvoice.Application.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Application\obj\Debug\netcoreapp2.1\MScInvoice.Application.csproj.AssemblyReference.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Application\obj\Debug\netcoreapp2.1\MScInvoice.Application.GeneratedMSBuildEditorConfig.editorconfig
-E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Application\obj\Debug\netcoreapp2.1\MScInvoice.Application.csproj.CopyComplete

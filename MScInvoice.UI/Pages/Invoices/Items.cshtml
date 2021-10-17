@@ -26,21 +26,25 @@
     </div>
     <div v-else>
         <div class="field">
-            <label class="label">Item Name</label>
-            <div class="control">
-                <input class="input" v-model="itemModel.name" />
+            <div class="block">
+                <label class="label">Item Name</label>
+                <div class="control">
+                    <input class="input" v-model="itemModel.name" />
+                </div>
+                <label class="label">Item Price</label>
+                <div class="control">
+                    <input class="input" v-model="itemModel.price" />
+                </div>
+                <label class="label">Item Tax</label>
+                <div class="control">
+                    <input class="input" v-model="itemModel.tax" />
+                </div>
             </div>
-            <label class="label">Item Price</label>
-            <div class="control">
-                <input class="input" v-model="itemModel.price" />
+            <div class="block">
+                <button class="button is-success" @@click="createItem" v-if="!itemModel.id">Create Item</button>
+                <button class="button is-warning" @@click="updateItem" v-else>Update Item</button>
+                <button class="button" @@click="cancel">Cancel</button>
             </div>
-            <label class="label">Item Tax</label>
-            <div class="control">
-                <input class="input" v-model="itemModel.tax" />
-            </div>
-            <button class="button is-success" @@click="createItem" v-if="!itemModel.id">Create Item</button>
-            <button class="button is-warning" @@click="updateItem" v-else>Update Item</button>
-            <button class="button" @@click="cancel">Cancel</button>
         </div>
 
     </div>

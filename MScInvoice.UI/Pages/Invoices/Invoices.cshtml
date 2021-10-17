@@ -9,20 +9,28 @@
         <!-- edit/new invoice-->
         <div v-if="editing">
             <div>
-                <div v-if="invoice.InvoiceId" class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
-                    <div class="column">
+                <div class="columns" style="margin-bottom: calc(0.2rem - 0.75rem);">
+                    <div v-if="invoice.InvoiceId" class="column">
                         <input hidden type="text" v-model="invoice.InvoiceId">
                         <label class="label">Invoice Number</label>
                         <div class="control">
                             <input readonly="readonly" class="input" v-model="invoice.InvoiceNumber" />
                         </div>
                     </div>
-                    <div class="column">
+                    <div v-if="invoice.InvoiceId" class="column">
                         <label class="label">Invoice Date</label>
                         <div class="control">
-                            <input readonly="readonly" class="input" v-model="invoice.InvoiceDate" />
+                            <input type="date" readonly="readonly" class="input" v-model="invoice.InvoiceDate" />
                         </div>
                     </div>
+                    <div class="column">
+                        <label class="label">Due Date</label>
+                        <div class="control">
+                            <input type="date" class="input" v-model="invoice.DueDate" />
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <label class="label">Browse customers</label>
@@ -35,9 +43,11 @@
                           placeholder="Please select a customer">
                 </Dropdown>
 
-                <p class="is-size-5" >Selected customer: <strong>{{ selectedCustomer.name || 'none' }}</strong></p>
-                <button class="button is-white" @@click="showHideCustomer">{{ checkButton }} Customer</button>
-                <button class="button is-light" @@click="addCustomer">Add new customer</button>
+                <p class="is-size-5 block" >Selected customer: <strong>{{ selectedCustomer.name || 'none' }}</strong></p>
+                <div class="block">
+                    <button class="button is-link is-light" @@click="showHideCustomer">{{ checkButton }} Customer</button>
+                    <button class="button is-warning is-light" @@click="addCustomer">Add new customer</button>
+                </div>
                 <div>
                     <div v-if="isSeenCustomer" class="field">
                         <label class="label">Customer Name</label>
@@ -82,11 +92,11 @@
                 <ul>
                     <li>Section</li>
 
-                    
-                    
+
+
                     <li class="box" v-for="(section, indexSection) in sections">
                         <label class="label">Browse Items</label>
-                        
+
                         <Dropdown :options="items"
                                   v-on:selected="itemSelection"
                                   v-on:filter="getDropdownValues"
@@ -98,7 +108,7 @@
                         <hr />
                         <button class="button is-warning" @@click="addItemToInvoice(indexSection)">Add Item</button>
 
-                        <p class="is-size-5" >Selected item: <strong>{{ selectedItem.name || 'none' }}</strong></p>
+                        <p class="is-size-5">Selected item: <strong>{{ selectedItem.name || 'none' }}</strong></p>
 
                         <ul>
                             <li>
@@ -209,7 +219,7 @@
                 <div class="block">
                     <div class="select">
                         <select v-model="selectedPayMethod">
-                            <option  v-for="payMethod in payMethods" v-bind:value="payMethod">
+                            <option v-for="payMethod in payMethods" v-bind:value="payMethod">
                                 {{payMethod.name}}
                             </option>
                         </select>
@@ -221,7 +231,9 @@
                     <button class="button" @@click="cancel">Cancel</button>
                     <button v-if="invoice.InvoiceId" class="button is-link" @@click="updateInvoice">Update invoice</button>
                     <button class="button" @@click="printInvoice">Print</button>
+
                 </div>
+                <br />
             </div>
         </div>
         <!-- list of invoices-->
@@ -260,7 +272,9 @@
     
     <script src="~/js/components/dropdown-items.js"></script>
     <script src="~/js/components/vue-simple-search-dropdown.js"></script>
+    
     <script src="~/js/invoices/invoices.js"></script>
+    
 
    
 

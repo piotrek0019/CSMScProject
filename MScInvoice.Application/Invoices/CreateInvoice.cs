@@ -46,6 +46,7 @@ namespace MScInvoice.Application.Invoices
             public string CustomerCity { get; set; }
             public string CustomerPostCode { get; set; }
             public string CustomerNumber1 { get; set; }
+            public DateTime InvoiceDueDate { get; set; }
             public int PayMethodId { get; set; }
             public List<Sections> Sections { get; set; }
 
@@ -171,6 +172,7 @@ namespace MScInvoice.Application.Invoices
                 InvoiceNo = invoiceNumber,
                 CustomerId = request.CustomerId,
                 Date = DateTime.Now,
+                DueDate = request.InvoiceDueDate,
                 
                 MyUserId = userId,
                 PayMethodId = request.PayMethodId

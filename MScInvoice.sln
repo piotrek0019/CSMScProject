@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MScInvoice.Application", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MScInvoice.Database", "MScInvoice.Database\MScInvoice.Database.csproj", "{8035BA0F-09F2-47C1-A573-2BB8372564E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{52AD7661-D6C3-40FD-AF1A-027AB9BB8DCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{52AD7661-D6C3-40FD-AF1A-027AB9BB8DCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

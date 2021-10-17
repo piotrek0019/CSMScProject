@@ -22,7 +22,7 @@
         items: [],
         payMethods: [],
         invoices: [],
-        invoice: {},
+        invoice: {   },
         selectedCustomer: {
             id: null,
             name: null,
@@ -47,6 +47,8 @@
             CustomerCity: " ",
             CustomerPostCode: " ",
             CustomerNumber1: " ",
+
+            InvoiceDueDate: null,
 
             PayMethodId: 0,
             Sections: []
@@ -104,9 +106,9 @@
     },
     methods: {
 
+
         test() {
 
-            this.sections[0].subSum = 2;
         },
         showHideCustomer: function() {
             this.isSeenCustomer = !this.isSeenCustomer;
@@ -135,8 +137,9 @@
                 .then(res => {
                    
                     var invoice = res.data;
-
                     
+                    
+
                     this.selectedCustomer = {
                         id: invoice.customerId,
                         name: invoice.customerName,
@@ -145,19 +148,25 @@
                         postCode: invoice.customerPostCode,
                         city: invoice.customerCity,
                         number1: invoice.customerNumber1
+                        
                     };
                     this.invoice = {
                         InvoiceId: invoice.id,
                         InvoiceNumber: invoice.invoiceNo,
                         InvoiceDate: invoice.date,
-                        InvoiceDescription: invoice.description
+                        InvoiceDescription: invoice.description,
+                       DueDate: invoice.invoiceDueDate,
+
+
+                        
 
                     };
                     this.selectedPayMethod = {
                         id: invoice.payMethodId,
                         name: invoice.payMethodName
                     },
-                    
+
+                        console.log(this.invoice.DueDate);
 
                     //display sections
                     this.sections = [];
@@ -259,8 +268,13 @@
                 CustomerCity: this.selectedCustomer.city,
                 CustomerPostCode: this.selectedCustomer.postCode,
                 CustomerNumber1: this.selectedCustomer.number1,
+
+                InvoiceDueDate: this.invoice.DueDate,
+
                 PayMethodId: this.selectedPayMethod.id,
                 Sections: sections2
+
+                
             })
                 .then(res => {
                     console.log(res);
@@ -270,6 +284,7 @@
                     console.log(err);
                 })
                 .then(() => {
+                    
                     this.loading = false;
                 });
         },
@@ -336,6 +351,9 @@
                 CustomerCity: this.selectedCustomer.city,
                 CustomerPostCode: this.selectedCustomer.postCode,
                 CustomerNumber1: this.selectedCustomer.number1,
+
+                InvoiceDueDate: this.invoice.DueDate,
+
                 PayMethodId: this.selectedPayMethod.id,
                 Sections: sections2
             })

@@ -23,39 +23,46 @@
                 </tr>
             </table>
         </div>
-            <div v-else>
-            <div class="field">
-                <label class="label">Customer Name</label>
-                <div class="control">
-                    <input class="input" v-model="customerModel.name" />
-                </div>
-                <label class="label">Address 1</label>
-                <div class="control">
-                    <input class="input" v-model="customerModel.address1" />
-                </div>
-                <label class="label">Address 2</label>
-                <div class="control">
-                    <input class="input" v-model="customerModel.address2" />
-                </div>
-                <label class="label">City</label>
-                <div class="control">
-                    <input class="input" v-model="customerModel.city" />
-                </div>
-                <label class="label">Post Code</label>
-                <div class="control">
-                    <input class="input" v-model="customerModel.postCode" />
-                </div>
-                <label class="label">Number</label>
-                <div class="control">
-                    <input class="input" v-model="customerModel.number1" />
-                </div>
-                <button class="button is-success" @@click="createCustomer" v-if="!customerModel.id">Create Customer</button>
-                <button class="button is-warning" @@click="updateCustomer" v-else>Update Customer</button>
-                <button class="button" @@click="cancel">Cancel</button>
+        <div v-else>
+            
+                <div class="field">
+                <div class="block">
+                    <label class="label">Customer Name</label>
+                    <div class="control">
+                        <input class="input" v-model="customerModel.name" />
+                    </div>
+                    <label class="label">Address 1</label>
+                    <div class="control">
+                        <input class="input" v-model="customerModel.address1" />
+                    </div>
+                    <label class="label">Address 2</label>
+                    <div class="control">
+                        <input class="input" v-model="customerModel.address2" />
+                    </div>
+                    <label class="label">City</label>
+                    <div class="control">
+                        <input class="input" v-model="customerModel.city" />
+                    </div>
+                    <label class="label">Post Code</label>
+                    <div class="control">
+                        <input class="input" v-model="customerModel.postCode" />
+                    </div>
+                    <label class="label">Number</label>
+                    <div class="control">
+                        <input class="input" v-model="customerModel.number1" />
+                    </div>
+                 </div>
+                <div class="block">
+                        <button class="button is-success" @@click="createCustomer" v-if="!customerModel.id">Create Customer</button>
+                        <button class="button is-warning" @@click="updateCustomer" v-else>Update Customer</button>
+                        <button class="button" @@click="cancel">Cancel</button>
 
+                </div>
+                <br />
+                
             </div>
         </div>
-    </div>
+     </div>
 
 
     @section scripts{

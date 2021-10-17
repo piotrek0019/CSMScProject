@@ -160,3 +160,4 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\D
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\MScInvoice.UI.GeneratedMSBuildEditorConfig.editorconfig
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\MyAccount\_MyAccountLayout.cshtml.g.cs
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\MyAccount\_ViewStart.cshtml.g.cs
+E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.UI\obj\Debug\netcoreapp2.1\Razor\Pages\Invoices\CustomerStats.cshtml.g.cs

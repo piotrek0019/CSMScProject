@@ -168,6 +168,8 @@ namespace MScInvoice.Database.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<DateTime>("DueDate");
+
                     b.Property<string>("InvoiceNo");
 
                     b.Property<string>("MyUserId");

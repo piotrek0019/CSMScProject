@@ -22,17 +22,21 @@
         </div>
         <div v-else>
             <div class="field">
-                <label class="label">User Name</label>
-                <div class="control">
-                    <input class="input" v-model="userModel.username" />
+                <div class="block">
+                    <label class="label">User Name</label>
+                    <div class="control">
+                        <input class="input" v-model="userModel.username" />
+                    </div>
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input class="input" v-model="userModel.password" />
+                    </div>
                 </div>
-                <label class="label">Password</label>
-                <div class="control">
-                    <input class="input" v-model="userModel.password" />
+                <div class="block">
+                    <button class="button" @@click="createUser()" v-if="!userModel.id">Create</button>
+                    <button class="button is-warning" @@click="updateUser" v-else>Update Item</button>
+                    <button class="button" @@click="cancel">Cancel</button>
                 </div>
-                <button class="button" @@click="createUser()" v-if="!userModel.id">Create</button>
-                <button class="button is-warning" @@click="updateUser" v-else>Update Item</button>
-                <button class="button" @@click="cancel">Cancel</button>
             </div>
         </div>
     </div>
