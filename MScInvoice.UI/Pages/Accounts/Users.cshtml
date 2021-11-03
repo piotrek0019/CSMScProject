@@ -16,6 +16,7 @@
                 <tr v-for="(user, index) in users">
                     <td>{{user.userName}}</td>
                     <td><a @@click="editUser(user.userName, index)">Edit</a></td>
+                    <td><a @@click="deleteUser(user.userName, index)">Remove</a></td>
 
                 </tr>
             </table>

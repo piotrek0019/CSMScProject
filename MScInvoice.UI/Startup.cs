@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DinkToPdf;
 using DinkToPdf.Contracts;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -67,7 +68,7 @@ namespace MScInvoice.UI
                         context.User.HasClaim("Role", "User")
                         || context.User.HasClaim("Role", "Admin")));
             });
-            
+
             services
                 .AddMvc()
                 .AddRazorPagesOptions(options =>
@@ -76,7 +77,8 @@ namespace MScInvoice.UI
                     options.Conventions.AuthorizeFolder("/MyAccount");
                     options.Conventions.AuthorizePage("/Accounts/Users", "Admin");
                 })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssembly(typeof(Startup).Assembly));
 
             services.AddTransient<CreateUser>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

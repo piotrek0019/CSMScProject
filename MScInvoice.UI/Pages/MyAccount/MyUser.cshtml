@@ -3,39 +3,46 @@
 @{
 }
 
-    <div>
-        <form method="post">
-            <div class="field">
-                <label class="label">User Name</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.UserName" />
-                </div>
-                <label class="label">Company Name</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.Name" />
-                </div>
-                <label class="label">Address 1</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.Address1" />
-                </div>
-                <label class="label">Address 2</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.Address2" />
-                </div>
-                <label class="label">City</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.City" />
-                </div>
-                <label class="label">Post Code</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.PostCode" />
-                </div>
-                <label class="label">Tax Number</label>
-                <div class="control">
-                    <input class="input" asp-for="@Model.MyUser.Number1" />
-                </div>
+<div>
+    
+    <form method="post">
+        <div class="field">
+            <label class="label">User Name</label>
+
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.UserName" />
             </div>
-            <button class="button" type="submit">Update</button>
-        </form>
+            <label class="label">Company Name</label>
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.Name" />
+            </div>
+            <label class="label">Address 1</label>
+            <span class="help is-danger" asp-validation-for="@Model.MyUser.Address1"></span>
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.Address1" />
+            </div>
+
+            <label class="label">Address 2</label>
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.Address2" />
+            </div>
+            <label class="label">City</label>
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.City" />
+            </div>
+            <label class="label">Post Code</label>
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.PostCode" />
+            </div>
+            <label class="label">Tax Number</label>
+            <div class="control">
+                <input class="input" asp-for="@Model.MyUser.Number1" />
+            </div>
+        </div>
+        <button class="button" type="submit">Update</button>
+    </form>
+</div>
+    <div class="column is-6">
+        <vc:cart view="Default"></vc:cart>
     </div>
     <br />

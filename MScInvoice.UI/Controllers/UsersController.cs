@@ -44,5 +44,8 @@ namespace MScInvoice.UI.Controllers
         [HttpGet("{name}")]
         public IActionResult GetUser(string name) => Ok(new GetUser(_userManager).Do(name));
 
+        [HttpDelete("{name}")]
+        public async Task<IActionResult> DeleteUser(string name) => Ok((await new DeleteUser(_userManager).Do(name)));
+
     }
 }

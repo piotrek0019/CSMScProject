@@ -38,6 +38,11 @@ namespace MScInvoice.UI.Pages.MyAccount
         {
             var updatedUser = new UpdateUserById(_httpContextAccessor, _context).Do(MyUser);
 
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             if (updatedUser)
                 return Redirect("/Invoices/Invoices");
 

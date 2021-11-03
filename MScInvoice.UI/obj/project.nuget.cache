@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "R0ag34liH+clTLELd+IH1FzseC+Lea1Ls8F43GWvPpV0UTIKuqGAPioqRcdJX82QIgguPN2UJQMclC1Rvy0eqg==",
+  "dgSpecHash": "FBCTSStbRii1+VgmHl4mYyxACjByQYkSLYorJOVBcsla9GHWAanoZhZ31naJkDmqdh2Rv/iXXnhFZwLbBYVfgg==",
   "success": true,
   "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.UI\\MScInvoice.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\piotr\\.nuget\\packages\\dinktopdf\\1.0.8\\dinktopdf.1.0.8.nupkg.sha512",
+    "C:\\Users\\piotr\\.nuget\\packages\\fluentvalidation\\8.5.0\\fluentvalidation.8.5.0.nupkg.sha512",
+    "C:\\Users\\piotr\\.nuget\\packages\\fluentvalidation.aspnetcore\\8.5.0\\fluentvalidation.aspnetcore.8.5.0.nupkg.sha512",
+    "C:\\Users\\piotr\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\8.5.0\\fluentvalidation.dependencyinjectionextensions.8.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",

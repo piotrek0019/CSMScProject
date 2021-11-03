@@ -84,6 +84,21 @@
                     this.editing = false;
                 });
         },
+        deleteUser(name, index) {
+            this.loading = true;
+            axios.delete('/users/' + name)
+                .then(res => {
+                    console.log(res);
+                    
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                    location.reload();
+                });
+        },
         newUser() {
             this.editing = true;
             this.userModel.id = 0;

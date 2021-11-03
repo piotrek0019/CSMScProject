@@ -17,7 +17,7 @@ namespace UnitTest
     {
         //private IHttpContextAccessor _httpContextAccessor;
         [Fact]
-        public void ItemsController_LastItemFromDatabase()
+        public void ItemsController_GetItemFromDatabase()
         {
 
             //change for static user ID in GetItems
