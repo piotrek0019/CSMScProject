@@ -6,7 +6,9 @@
 <div id="app" class="container">
 
     <div v-if="!editing">
-        <button class="button" @@click="newItem">Add New Item</button>
+        <button class="button" 
+                @@click="newItem">Add New Item
+        </button>
         <table class="table">
             <tr>
                 <th>Id</th>
@@ -19,30 +21,62 @@
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.price}}</td>
-                <td><a @@click="editItem(item.id, index)">Edit</a></td>
-                <td><a @@click="deleteItem(item.id, index)">Remove</a></td>
+                <td>
+                    <a @@click="editItem(item.id, index)">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a @@click="deleteItem(item.id, index)">
+                        Remove
+                    </a>
+                </td>
             </tr>
         </table>
     </div>
     <div v-else>
         <div class="field">
+            <div class="box"  v-if="!formIsValid">
+                <p class="help is-danger">
+                Something has gone wrong. Check the correct inputs' format
+                </p>
+            </div>
             <div class="block">
                 <label class="label">Item Name</label>
                 <div class="control">
+                    <p class="help is-danger" v-if="!nameIsValid">
+                        Name can't be empty
+                    </p>
                     <input class="input" v-model="itemModel.name" />
                 </div>
                 <label class="label">Item Price</label>
                 <div class="control">
-                    <input class="input" v-model="itemModel.price" />
+                    <p class="help is-danger" v-if="!priceIsValid">
+                    Price must be number with format 9.99 and more then 0
+                    </p>
+                    <input type='number' step='0.1' min="0" class="input"  
+                           v-model.number="itemModel.price" />
                 </div>
-                <label class="label">Item Tax</label>
+                <label class="label" >Item Tax</label>
                 <div class="control">
-                    <input class="input" v-model="itemModel.tax" />
+                    <p class="help is-danger" v-if="!taxIsValid">
+                        Tax must be number between 0 and 99
+                    </p>
+                    <input type='number' min="0" max="100" class="input" 
+                           v-model="itemModel.tax" />
                 </div>
             </div>
             <div class="block">
-                <button class="button is-success" @@click="createItem" v-if="!itemModel.id">Create Item</button>
-                <button class="button is-warning" @@click="updateItem" v-else>Update Item</button>
+                <button class="button is-success" 
+                        @@click="createItem" 
+                        v-if="!itemModel.id">
+                    <span v-if="loading">Loading...</span>
+                    <slot v-else>Save Item</slot>
+                </button>
+                <button class="button is-warning" @@click="updateItem" v-else>
+                    <span v-if="loading">Loading...</span>
+                    <slot v-else>Update Item</slot>
+                </button>
                 <button class="button" @@click="cancel">Cancel</button>
             </div>
         </div>

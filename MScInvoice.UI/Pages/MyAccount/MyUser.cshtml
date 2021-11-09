@@ -17,7 +17,7 @@
                 <input class="input" asp-for="@Model.MyUser.Name" />
             </div>
             <label class="label">Address 1</label>
-            <span class="help is-danger" asp-validation-for="@Model.MyUser.Address1"></span>
+                <span class="help is-danger" asp-validation-for="@Model.MyUser.Address1"></span>
             <div class="control">
                 <input class="input" asp-for="@Model.MyUser.Address1" />
             </div>
@@ -38,8 +38,17 @@
             <div class="control">
                 <input class="input" asp-for="@Model.MyUser.Number1" />
             </div>
+            <hr style="color: gray; background-color: gray" />
+            <div class="field">
+                <label class="label">Password - leave empty if you don't want update</label>
+
+                <div class="control">
+                    <input class="input" asp-for="@Model.MyUser.Password" />
+                </div>
+            </div>
         </div>
-        <button class="button" type="submit">Update</button>
+        <button class="button is-success" type="submit">Update</button>
+        <a class="button" asp-page="/Invoices/Invoices">Cancel</a>
     </form>
 </div>
     <div class="column is-6">

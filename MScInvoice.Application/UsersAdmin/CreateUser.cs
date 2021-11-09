@@ -11,16 +11,15 @@ namespace MScInvoice.Application.UsersAdmin
 {
     public class CreateUser
     {
-
         private UserManager<MyUser> _userManager;
         private IPasswordHasher<MyUser> _passwordHash;
 
-        public CreateUser(UserManager<MyUser> userManager, IPasswordHasher<MyUser> passwordHash)
+        public CreateUser(UserManager<MyUser> userManager, 
+            IPasswordHasher<MyUser> passwordHash)
         {
             _userManager = userManager;
             _passwordHash = passwordHash;
         }
-
         public class Request
         {
             public string UserName { get; set; }
@@ -34,17 +33,12 @@ namespace MScInvoice.Application.UsersAdmin
 
         public async Task<Response> Do(Request request)
         {
-
-            
-
             var User = new MyUser()
             {
                 UserName = request.UserName
             };
 
-
-            await _userManager.CreateAsync(User, request.Password);
-            
+            await _userManager.CreateAsync(User, request.Password); 
 
             var userClaim = new Claim("Role", "User");
 

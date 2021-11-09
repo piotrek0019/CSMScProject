@@ -41,14 +41,22 @@ namespace MScInvoice.UI
                             UserName = "Test"
                         };
 
-                        userManager.CreateAsync(adminUser, "password").GetAwaiter().GetResult();
-                        userManager.CreateAsync(testUser, "password").GetAwaiter().GetResult();
+                        userManager.CreateAsync(adminUser, "password").
+                            GetAwaiter().
+                            GetResult();
+                        userManager.CreateAsync(testUser, "password").
+                            GetAwaiter().
+                            GetResult();
 
                         var adminClaim = new Claim("Role", "Admin");
                         var userClaim = new Claim("Role", "User");
 
-                        userManager.AddClaimAsync(adminUser, adminClaim).GetAwaiter().GetResult();
-                        userManager.AddClaimAsync(testUser, userClaim).GetAwaiter().GetResult();
+                        userManager.AddClaimAsync(adminUser, adminClaim).
+                            GetAwaiter().
+                            GetResult();
+                        userManager.AddClaimAsync(testUser, userClaim).
+                            GetAwaiter().
+                            GetResult();
                     }
                 }
             }

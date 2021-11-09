@@ -15,5 +15,6 @@ namespace MScInvoice.Application.MyAccount
         public string PostCode { get; set; }
         public string City { get; set; }
         public string Number1 { get; set; }
+        public string Password { get; set; }
     }
 }

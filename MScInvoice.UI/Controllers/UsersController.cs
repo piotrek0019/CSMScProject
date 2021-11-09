@@ -22,30 +22,32 @@ namespace MScInvoice.UI.Controllers
         private UserManager<MyUser> _userManager;
         private IPasswordHasher<MyUser> _passwordHash;
 
-        public UsersController(CreateUser createUser, UserManager<MyUser> userManager, IPasswordHasher<MyUser> passwordHash)
+        public UsersController(CreateUser createUser, 
+            UserManager<MyUser> userManager, 
+            IPasswordHasher<MyUser> passwordHash)
         {
             _createUser = createUser;
             _userManager = userManager;
             _passwordHash = passwordHash;
         }
 
-        public async Task<IActionResult> CreateUser([FromBody] CreateUser.Request request) => Ok((await _createUser.Do(request)));
-        /*{
-            await _createUser.Do(request);
-
-            return Ok();
-        }*/
+        public async Task<IActionResult> CreateUser([FromBody] CreateUser.Request request) => 
+            Ok((await _createUser.Do(request)));
+       
 
         [HttpGet("")]
         public IActionResult GetUsers() => Ok(new GetUsers(_userManager).Do());
 
         [HttpPut("")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUser.Request request) => Ok((await new UpdateUser(_userManager, _passwordHash).Do(request)));
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUser.Request request) => 
+            Ok((await new UpdateUser(_userManager, _passwordHash).Do(request)));
+
         [HttpGet("{name}")]
         public IActionResult GetUser(string name) => Ok(new GetUser(_userManager).Do(name));
 
         [HttpDelete("{name}")]
-        public async Task<IActionResult> DeleteUser(string name) => Ok((await new DeleteUser(_userManager).Do(name)));
+        public async Task<IActionResult> DeleteUser(string name) => 
+            Ok((await new DeleteUser(_userManager).Do(name)));
 
     }
 }

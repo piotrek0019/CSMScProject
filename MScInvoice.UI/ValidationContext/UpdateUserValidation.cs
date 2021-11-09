@@ -1,6 +1,4 @@
-﻿
-
-using FluentValidation;
+﻿using FluentValidation;
 using MScInvoice.Application.MyAccount;
 
 namespace MScInvoice.UI.ValidationContext

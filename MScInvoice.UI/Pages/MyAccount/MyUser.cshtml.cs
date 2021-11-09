@@ -15,15 +15,16 @@ namespace MScInvoice.UI.Pages.MyAccount
     {
         private IHttpContextAccessor _httpContextAccessor;
         private ApplicationDbContext _context;
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
+        private IPasswordHasher<MScInvoice.Domain.Models.MyUser> _passwordHash;
 
-        public MyUserModel(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context)
+        public MyUserModel(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context, UserManager<MScInvoice.Domain.Models.MyUser> userManager, IPasswordHasher<MScInvoice.Domain.Models.MyUser> passwordHash)
         {
             _httpContextAccessor = httpContextAccessor;
             _context = context;
-            
+            _userManager = userManager;
+            _passwordHash = passwordHash;
         }
-
         [BindProperty]
         public MyUserViewModel MyUser { get; set; }
 
@@ -33,17 +34,15 @@ namespace MScInvoice.UI.Pages.MyAccount
 
             return Page();
         }
-
         public IActionResult OnPost()
         {
-            var updatedUser = new UpdateUserById(_httpContextAccessor, _context).Do(MyUser);
+            var updatedUser = new UpdateUserById(_httpContextAccessor, _context, _userManager, _passwordHash).Do(MyUser);
 
             if(!ModelState.IsValid)
             {
                 return Page();
             }
-
-            if (updatedUser)
+            if (updatedUser.Result)
                 return Redirect("/Invoices/Invoices");
 
             else

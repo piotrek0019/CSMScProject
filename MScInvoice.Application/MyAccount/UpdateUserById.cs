@@ -15,14 +15,17 @@ namespace MScInvoice.Application.MyAccount
         private IHttpContextAccessor _httpContextAccessor;
         private ApplicationDbContext _context;
         private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
+        private IPasswordHasher<MScInvoice.Domain.Models.MyUser> _passwordHash;
 
-        public UpdateUserById(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context)
+        public UpdateUserById(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context, UserManager<MScInvoice.Domain.Models.MyUser> userManager, IPasswordHasher<MScInvoice.Domain.Models.MyUser> passwordHash)
         {
             _httpContextAccessor = httpContextAccessor;
             _context = context;
+            _userManager = userManager;
+            _passwordHash = passwordHash;
         }
 
-        public bool Do(MyUserViewModel request)
+        public async Task<bool> Do(MyUserViewModel request)
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var myUser = _context.MyUsers.FirstOrDefault(x => x.Id == userId);
@@ -34,9 +37,19 @@ namespace MScInvoice.Application.MyAccount
             myUser.City = request.City;
             myUser.PostCode = request.PostCode;
             myUser.Number1 = request.Number1;
-            
 
-            _context.SaveChanges();
+
+            await _context.SaveChangesAsync();
+
+            if(!String.IsNullOrEmpty(request.Password))
+            { 
+                var user = _userManager.Users.FirstOrDefault(x => x.Id == userId);
+
+                user.UserName = request.UserName;
+                user.PasswordHash = _passwordHash.HashPassword(user, request.Password);
+
+               await _userManager.UpdateAsync(user);
+            }
 
             return true;
         }

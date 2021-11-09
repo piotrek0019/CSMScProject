@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MScInvoice.Application.Invoices
@@ -15,12 +16,12 @@ namespace MScInvoice.Application.Invoices
         private ApplicationDbContext _context;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public UpdateInvoice(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        public UpdateInvoice(ApplicationDbContext context, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
-
         public class Items
         {
             public int ItemId { get; set; }
@@ -29,7 +30,6 @@ namespace MScInvoice.Application.Invoices
             public decimal Tax { get; set; }
             public int Quantity { get; set; }
         }
-
         public class Sections
         {
             public string Name { get; set; }
@@ -65,7 +65,12 @@ namespace MScInvoice.Application.Invoices
         public async Task<Response> Do(Request request)
         {
 
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier)
+                .Value;
+
             //adding new customer if doesn't exist
             if (request.CustomerId == 0)
             {
@@ -88,7 +93,8 @@ namespace MScInvoice.Application.Invoices
             //editing a customer
             if (request.CustomerId != 0)
             {
-                var customer = _context.Customers.FirstOrDefault(x => x.Id == request.CustomerId);
+                var customer = _context.Customers.FirstOrDefault(x => 
+                    x.Id == request.CustomerId);
 
                 customer.Name = request.CustomerName;
                 customer.Address1 = request.CustomerAddress1;
@@ -101,7 +107,8 @@ namespace MScInvoice.Application.Invoices
                 await _context.SaveChangesAsync();
             }
             
-            var deleteSections = _context.InvoiceSections.Where(x => x.InvoiceId == request.InvoiceId);
+            var deleteSections = _context.InvoiceSections.Where(x => 
+                x.InvoiceId == request.InvoiceId);
 
            
 
@@ -129,7 +136,8 @@ namespace MScInvoice.Application.Invoices
                         item.ItemId = newItem.Id;
                     }
 
-                    var itemDb = _context.Items.FirstOrDefault(x => x.Id == item.ItemId);
+                    var itemDb = _context.Items.FirstOrDefault(x => 
+                        x.Id == item.ItemId);
                     //updating item if changed 
                     if (itemDb.Name != item.Name || itemDb.Price != item.Price)
                     {
@@ -142,7 +150,8 @@ namespace MScInvoice.Application.Invoices
                 }
             }
             //update invoice table
-            var invoiceDb = _context.Invoices.FirstOrDefault(x => x.Id == request.InvoiceId);
+            var invoiceDb = _context.Invoices.FirstOrDefault(x => 
+                x.Id == request.InvoiceId);
 
             invoiceDb.CustomerId = request.CustomerId;
             invoiceDb.PayMethodId = request.PayMethodId;
@@ -185,6 +194,9 @@ namespace MScInvoice.Application.Invoices
                         Tax = item.Tax
                     });
                 }
+                //just to give time for presenting the button update is "lading..."
+                Thread.Sleep(500);
+
                 _context.InvoiceItems.AddRange(items);
                 await _context.SaveChangesAsync();
 
@@ -193,7 +205,8 @@ namespace MScInvoice.Application.Invoices
                 sections = new InvoiceSection();
             }
 
-            var invoice = _context.Invoices.FirstOrDefault(x => x.Id == request.InvoiceId);
+            var invoice = _context.Invoices.FirstOrDefault(x => 
+                x.Id == request.InvoiceId);
 
 
             return new Response

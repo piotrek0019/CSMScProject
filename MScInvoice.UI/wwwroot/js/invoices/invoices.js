@@ -22,7 +22,7 @@
         items: [],
         payMethods: [],
         invoices: [],
-        invoice: {   },
+        invoice: {},
         selectedCustomer: {
             id: null,
             name: null,
@@ -60,7 +60,8 @@
         this.getCustomers(),
         this.getItems(),
         this.getPayMethods(),
-        this.getInvoices()
+            this.getInvoices()
+
     },
     computed: {
         sumTotal: function () {
@@ -135,7 +136,8 @@
             this.loading = true;
             axios.get('/invoices/' + id)
                 .then(res => {
-                   
+
+                    
                     var invoice = res.data;
                     
                     
@@ -284,7 +286,7 @@
                     console.log(err);
                 })
                 .then(() => {
-                    
+                    alert("Invoice Saved Successfully");
                     this.loading = false;
                 });
         },
@@ -295,9 +297,10 @@
             
         },
         newInvoice() {
+            
             this.editing = true;
             this.selectedCustomer = {};
-            this.invoice = {};
+            this.invoice = { DueDate: new Date().toISOString().substr(0, 10) }
             this.selectedPayMethod = this.payMethods[0];
             this.sections = [{
                 name: "Section 1",
@@ -365,6 +368,7 @@
                     console.log(err);
                 })
                 .then(() => {
+                    alert("Invoice Updated Successfully");
                     this.loading = false;
                 });
         },
@@ -501,6 +505,7 @@
                     this.loading = false;
                 });
         },
+
        
     }
 })
