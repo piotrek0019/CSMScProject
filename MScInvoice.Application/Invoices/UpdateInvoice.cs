@@ -106,7 +106,7 @@ namespace MScInvoice.Application.Invoices
 
                 await _context.SaveChangesAsync();
             }
-            
+            //deleting all sections with theirs items so new can added to edited invoice
             var deleteSections = _context.InvoiceSections.Where(x => 
                 x.InvoiceId == request.InvoiceId);
 
@@ -139,7 +139,7 @@ namespace MScInvoice.Application.Invoices
                     var itemDb = _context.Items.FirstOrDefault(x => 
                         x.Id == item.ItemId);
                     //updating item if changed 
-                    if (itemDb.Name != item.Name || itemDb.Price != item.Price)
+                    if (itemDb.Name != item.Name || itemDb.Price != item.Price || itemDb.Tax != item.Tax)
                     {
                         itemDb.Name = item.Name;
                         itemDb.Price = item.Price;
@@ -194,7 +194,7 @@ namespace MScInvoice.Application.Invoices
                         Tax = item.Tax
                     });
                 }
-                //just to give time for presenting the button update is "lading..."
+                //just to give time for presenting the button update is "loading..."
                 Thread.Sleep(500);
 
                 _context.InvoiceItems.AddRange(items);

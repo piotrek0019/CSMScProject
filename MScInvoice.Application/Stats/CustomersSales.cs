@@ -16,7 +16,8 @@ namespace MScInvoice.Application.Stats
         private IHttpContextAccessor _httpContextAccessor;
 
 
-        public GetCustomersSales(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        public GetCustomersSales(ApplicationDbContext context, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
@@ -49,7 +50,10 @@ namespace MScInvoice.Application.Stats
 
         public List<CustomerSalesVM> Do()
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var customers = _context.Customers
                     .Where(x => x.MyUserId == userId)

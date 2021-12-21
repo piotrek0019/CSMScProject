@@ -36,3 +36,41 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\UnitTest\obj\Debug\
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.pdb
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.genruntimeconfig.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.csproj.CopyComplete
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\CoverletSourceRootsMapping
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\appsettings.Development.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\testhost.exe
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\testhost.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.Views.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.Views.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.deps.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.runtimeconfig.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.runtimeconfig.dev.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\appsettings.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\Controllers\libwkhtmltox.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\libwkhtmltox.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\UnitTest.deps.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\UnitTest.runtimeconfig.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\UnitTest.runtimeconfig.dev.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\UnitTest.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\UnitTest.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.Application.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.Database.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.Domain.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.Database.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.UI.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\bin\Debug\netcoreapp2.1\MScInvoice.Application.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.csproj.AssemblyReference.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.AssemblyInfoInputs.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.AssemblyInfo.cs
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.csproj.CoreCompileInputs.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.genruntimeconfig.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\UnitTest\obj\Debug\netcoreapp2.1\UnitTest.csproj.CopyComplete

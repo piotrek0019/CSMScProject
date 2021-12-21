@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nePZBDI3cZ9nOiDiCIiHJLYKIlyCnWuL6+wACXyG4052e3+6BjBiW0W4JFrCYX6VM3tIkXz4g8waNl6tDXhCPQ==",
+  "dgSpecHash": "FPQtMgYhVziQKDFRaQVUrdn0S6iQJu/jrmYmMn+YF9w0nkFC2FO84R2SflAsSsV63xOu4WE7VZL9c9NjiYxXeQ==",
   "success": true,
-  "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
+  "projectFilePath": "E:\\OneDrive\\Programowanie\\Projects\\CSMScProject\\MScInvoice.Domain\\MScInvoice.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.1.1\\microsoft.aspnetcore.authentication.2.1.1.nupkg.sha512",
     "C:\\Users\\piotr\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.1.1\\microsoft.aspnetcore.authentication.abstractions.2.1.1.nupkg.sha512",

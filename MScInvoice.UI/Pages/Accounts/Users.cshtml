@@ -15,8 +15,16 @@
                 </tr>
                 <tr v-for="(user, index) in users">
                     <td>{{user.userName}}</td>
-                    <td><a @@click="editUser(user.userName, index)">Edit</a></td>
-                    <td><a @@click="deleteUser(user.userName, index)">Remove</a></td>
+                    <td>
+                        <a @@click="editUser(user.userName, index)">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a @@click="deleteUser(user.userName, index)">
+                        Remove
+                        </a>
+                    </td>
 
                 </tr>
             </table>
@@ -26,26 +34,39 @@
                 <div class="block">
                     <label class="label">User Name</label>
                     <div class="control">
-                        <input class="input" v-model="userModel.username" />
+                        <input class="input" 
+                               v-model="userModel.username" />
                     </div>
                     <label class="label">Password</label>
                     <div class="control">
-                        <input class="input" v-model="userModel.password" />
+                        <input class="input" 
+                               v-model="userModel.password" />
                     </div>
                 </div>
                 <div class="block">
-                    <button class="button" @@click="createUser()" v-if="!userModel.id">Create</button>
-                    <button class="button is-warning" @@click="updateUser" v-else>Update Item</button>
-                    <button class="button" @@click="cancel">Cancel</button>
+                    <button class="button" 
+                            @@click="createUser()" 
+                            v-if="!userModel.id">
+                        Create
+                    </button>
+                    <button class="button is-warning" 
+                            @@click="updateUser" 
+                            v-else>
+                        Update Item
+                    </button>
+                    <button class="button" @@click="cancel">
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
-        @section scripts{
-            <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-            <script src="~/js/accounts/users.js"></script>
-        }
+    <script src="~/js/accounts/users.js"></script>
+}

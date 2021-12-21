@@ -16,13 +16,15 @@ namespace MScInvoice.UI.Controllers
         private ApplicationDbContext _ctx;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public StatsController(ApplicationDbContext ctx, IHttpContextAccessor httpContextAccessor)
+        public StatsController(ApplicationDbContext ctx, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _ctx = ctx;
             _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
-        public IActionResult GetCustomersSales() => Ok(new GetCustomersSales(_ctx, _httpContextAccessor).Do());
+        public IActionResult GetCustomersSales() => 
+            Ok(new GetCustomersSales(_ctx, _httpContextAccessor).Do());
     }
 }

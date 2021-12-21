@@ -25,8 +25,9 @@ namespace UnitTest
             optionsBuilder.UseInMemoryDatabase(MethodBase.GetCurrentMethod().Name);
             using (ApplicationDbContext ctx = new ApplicationDbContext(optionsBuilder.Options, null))
             {
-                ctx.Add(new Item() { Name = "Foo", MyUserId = "1ea7e2ca-5310-414d-9cb4-8d4e61eb72e8" });
+                ctx.Add(new Item() { Name = "ItemTest", MyUserId = "testUser" });
                 ctx.SaveChanges();
+               
             }
             IActionResult result;
             using (ApplicationDbContext ctx = new ApplicationDbContext(optionsBuilder.Options, null))
@@ -37,9 +38,10 @@ namespace UnitTest
             var okResult = Assert.IsType<OkObjectResult>(result);
             var items = Assert.IsType<List<ItemViewModel>>(okResult.Value);
             var item = Assert.Single(items);
+            
             Assert.NotNull(item);
             Assert.Equal(1, item.Id);
-            Assert.Equal("Foo", item.Name);
+            Assert.Equal("ItemTest", item.Name);
         }
     }
 }

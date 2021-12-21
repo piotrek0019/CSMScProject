@@ -17,7 +17,8 @@ namespace MScInvoice.Application.PayMethods
         }
 
         public PayMethodViewModel Do(int id) =>
-            _ctx.PayMethods.Where(x => x.Id == id).Select(x => new PayMethodViewModel
+            _ctx.PayMethods.Where(x => x.Id == id)
+            .Select(x => new PayMethodViewModel
             {
                 Id = x.Id,
                 Name = x.Name,

@@ -12,7 +12,9 @@ namespace MScInvoice.Application.UsersAdmin
         private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
         private IPasswordHasher<MScInvoice.Domain.Models.MyUser> _passwordHash;
 
-        public UpdateUser(UserManager<MScInvoice.Domain.Models.MyUser> userManager, IPasswordHasher<MScInvoice.Domain.Models.MyUser> passwordHash)
+        public UpdateUser(UserManager<MScInvoice.Domain.Models.MyUser> 
+            userManager, IPasswordHasher<
+                MScInvoice.Domain.Models.MyUser> passwordHash)
         {
             _userManager = userManager;
             _passwordHash = passwordHash;
@@ -20,10 +22,12 @@ namespace MScInvoice.Application.UsersAdmin
 
         public async Task<Response> Do(Request request)
         {
-            var user = _userManager.Users.FirstOrDefault(x => x.Id == request.Id );
+            var user = _userManager.Users
+                .FirstOrDefault(x => x.Id == request.Id );
 
             user.UserName = request.UserName;
-            user.PasswordHash = _passwordHash.HashPassword(user, request.Password);
+            user.PasswordHash = _passwordHash.HashPassword(user, 
+                request.Password);
 
             await _userManager.UpdateAsync(user);
 

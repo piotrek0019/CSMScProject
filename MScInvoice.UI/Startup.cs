@@ -82,6 +82,13 @@ namespace MScInvoice.UI
 
             services.AddTransient<CreateUser>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //Elmah.is
+            services.AddElmahIo(o =>
+            {
+                o.ApiKey = "13400aea07ba4613b286c74cff40897f";
+                o.LogId = new Guid("bf60305a-39b9-42af-a74e-3ee62e414daf");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,6 +103,8 @@ namespace MScInvoice.UI
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+            //Elmah.is
+            app.UseElmahIo();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -14,7 +14,8 @@ namespace MScInvoice.Application.PayMethods
         private ApplicationDbContext _ctx;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public GetPayMethods(ApplicationDbContext ctx, IHttpContextAccessor httpContextAccessor)
+        public GetPayMethods(ApplicationDbContext ctx, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _ctx = ctx;
             _httpContextAccessor = httpContextAccessor;
@@ -22,8 +23,13 @@ namespace MScInvoice.Application.PayMethods
 
         public IEnumerable<PayMethodViewModel> Do()
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return _ctx.PayMethods.Where(x => x.MyUserId == userId).ToList().Select(x => new PayMethodViewModel
+            var userId = _httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _ctx.PayMethods.Where(x => x.MyUserId == userId)
+                .ToList()
+                .Select(x => new PayMethodViewModel
             {
                 Id = x.Id,
                 Name = x.Name,

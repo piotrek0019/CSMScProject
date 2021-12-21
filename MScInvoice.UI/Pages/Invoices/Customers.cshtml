@@ -2,10 +2,11 @@
 @model MScInvoice.UI.Pages.Admin.CustomersModel
 @{
 }
-
     <div id="app" class="container">
         <div v-if="!editing">
-            <button class="button" @@click="newCustomer">Add New Customer</button>
+            <button class="button" @@click="newCustomer">
+                Add New Customer
+            </button>
             <table class="table">
                 <tr>
                     <th>Id</th>
@@ -18,8 +19,16 @@
                     <td>{{customer.id}}</td>
                     <td>{{customer.name}}</td>
                     <td>{{customer.city}}</td>
-                    <td><a @@click="editCustomer(customer.id, index)">Edit</a></td>
-                    <td><a @@click="deleteCustomer(customer.id, index)">Remove</a></td>
+                    <td>
+                        <a @@click="editCustomer(customer.id, index)">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a @@click="deleteCustomer(customer.id, index)">
+                            Remove
+                        </a>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -53,9 +62,16 @@
                     </div>
                  </div>
                 <div class="block">
-                        <button class="button is-success" @@click="createCustomer" v-if="!customerModel.id">Create Customer</button>
-                        <button class="button is-warning" @@click="updateCustomer" v-else>Update Customer</button>
-                        <button class="button" @@click="cancel">Cancel</button>
+                        <button class="button is-success" 
+                                @@click="createCustomer" v-if="!customerModel.id">
+                            Create Customer
+                        </button>
+                        <button class="button is-warning" @@click="updateCustomer" v-else>
+                            Update Customer
+                        </button>
+                        <button class="button" @@click="cancel">
+                            Cancel
+                        </button>
 
                 </div>
                 <br />
@@ -65,9 +81,9 @@
      </div>
 
 
-    @section scripts{
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <script src="~/js/invoices/customers.js"></script>
-    }
+    <script src="~/js/invoices/customers.js"></script>
+}

@@ -43,3 +43,35 @@ E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.genruntimeconfig.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.AssemblyReference.cache
 E:\OneDrive\Programowanie\Projects\CSMScProject\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.deps.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.runtimeconfig.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.runtimeconfig.dev.json
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Domain.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.AssemblyReference.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.AssemblyInfoInputs.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.AssemblyInfo.cs
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.CoreCompileInputs.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.dll
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.pdb
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.genruntimeconfig.cache
+E:\OneDrive\UniversityOfHertfordshire\Computer Science MSc Project\deploy\invoice\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.CopyComplete
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.deps.json
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.runtimeconfig.json
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.runtimeconfig.dev.json
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.dll
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Database.pdb
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Domain.dll
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\bin\Debug\netcoreapp2.1\MScInvoice.Domain.pdb
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.AssemblyReference.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.AssemblyInfoInputs.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.AssemblyInfo.cs
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.CoreCompileInputs.cache
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.csproj.CopyComplete
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.dll
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.pdb
+E:\OneDrive\Programowanie\Projects\CSMScProject\MScInvoice.Database\obj\Debug\netcoreapp2.1\MScInvoice.Database.genruntimeconfig.cache

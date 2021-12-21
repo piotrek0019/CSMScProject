@@ -18,7 +18,8 @@ namespace MScInvoice.Application.PayMethods
 
         public async Task<Response> Do(Request request)
         {
-            var payMethod = _context.PayMethods.FirstOrDefault(x => x.Id == request.Id);
+            var payMethod = _context.PayMethods
+                .FirstOrDefault(x => x.Id == request.Id);
 
             payMethod.Name = request.Name;
             

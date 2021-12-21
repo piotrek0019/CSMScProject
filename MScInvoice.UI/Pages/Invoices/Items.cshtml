@@ -54,22 +54,18 @@
                     <p class="help is-danger" v-if="!priceIsValid">
                     Price must be number with format 9.99 and more then 0
                     </p>
-                    <input type='number' step='0.1' min="0" class="input"  
-                           v-model.number="itemModel.price" />
+                    <input type='number' step='0.1' min="0" class="input"  v-model.number="itemModel.price" />
                 </div>
                 <label class="label" >Item Tax</label>
                 <div class="control">
                     <p class="help is-danger" v-if="!taxIsValid">
                         Tax must be number between 0 and 99
                     </p>
-                    <input type='number' min="0" max="100" class="input" 
-                           v-model="itemModel.tax" />
+                    <input type='number' step='1'min="0" max="100" class="input" v-model.number="itemModel.tax" />
                 </div>
             </div>
             <div class="block">
-                <button class="button is-success" 
-                        @@click="createItem" 
-                        v-if="!itemModel.id">
+                <button class="button is-success" @@click="createItem" v-if="!itemModel.id">
                     <span v-if="loading">Loading...</span>
                     <slot v-else>Save Item</slot>
                 </button>

@@ -18,7 +18,8 @@ namespace MScInvoice.Application.UsersAdmin
         }
 
         public UserViewModel Do(string name) =>
-            _userManager.Users.Where(x => x.UserName == name).Select(x => new UserViewModel
+            _userManager.Users.Where(x => x.UserName == name)
+            .Select(x => new UserViewModel
             {
                 Id = x.Id,
                 UserName = x.UserName

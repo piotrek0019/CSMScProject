@@ -16,15 +16,20 @@ namespace MScInvoice.Application.MyAccount
         private ApplicationDbContext _context;
         private UserManager<MScInvoice.Domain.Models.MyUser> _userManager;
 
-        public GetUserById(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context)
+        public GetUserById(IHttpContextAccessor httpContextAccessor, 
+            ApplicationDbContext context)
         {
             _httpContextAccessor = httpContextAccessor;
             _context = context;
         }
         public MyUserViewModel Do()
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var myUser = _context.MyUsers.Where(x => x.Id == userId).Select(x => new MyUserViewModel
+            var userId = _httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier).Value;
+            var myUser = _context.MyUsers.Where(x => x.Id == userId)
+                .Select(x => new MyUserViewModel
             {
                 UserName = x.UserName,
                 Name = x.Name,

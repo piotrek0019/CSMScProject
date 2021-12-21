@@ -59,11 +59,8 @@
                 });
         },
         createItem() {
-            this.priceIsValid = typeof this.itemModel.price === 'number'
-                && this.itemModel.price > 0;
-            this.taxIsValid = typeof this.itemModel.tax === 'number'
-                && this.itemModel.tax >= 0
-                && this.itemModel.tax < 100;
+            this.priceIsValid = typeof this.itemModel.price === 'number' && this.itemModel.price >= 0;
+            this.taxIsValid = typeof this.itemModel.tax === 'number' && this.itemModel.tax >= 0 && this.itemModel.tax < 100;
             this.nameIsValid = !!this.itemModel.name
 
             this.formIsValid = this.priceIsValid
@@ -92,11 +89,12 @@
             }
             else {
                 console.log("NOT VALID");
+                console.log(this.itemModel.tax)
             }
         },
         updateItem() {
             
-            this.priceIsValid = typeof this.itemModel.price === 'number' && this.itemModel.price > 0;
+            this.priceIsValid = typeof this.itemModel.price === 'number' && this.itemModel.price >= 0;
             this.taxIsValid = typeof this.itemModel.tax === 'number' && this.itemModel.tax >= 0 && this.itemModel.tax < 100;
             this.nameIsValid = !!this.itemModel.name
 

@@ -13,7 +13,8 @@ namespace MScInvoice.Application.Items
         private ApplicationDbContext _ctx;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public GetItems(ApplicationDbContext ctx, IHttpContextAccessor httpContextAccessor)
+        public GetItems(ApplicationDbContext ctx, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _ctx = ctx;
             _httpContextAccessor = httpContextAccessor;
@@ -21,9 +22,13 @@ namespace MScInvoice.Application.Items
 
         public IEnumerable<ItemViewModel> Do()
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var userId = "1ea7e2ca-5310-414d-9cb4-8d4e61eb72e8";
-            var items =  _ctx.Items.Where(x => x.MyUserId == userId).Select(x => new ItemViewModel
+            var userId = _httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var userId = "1ea7e2ca-5310-414d-9cb4-8d4e61eb72e8";            
+            var items =  _ctx.Items.Where(x => x.MyUserId == userId)
+                .Select(x => new ItemViewModel
             {
                 Id = x.Id,
                 Name = x.Name,

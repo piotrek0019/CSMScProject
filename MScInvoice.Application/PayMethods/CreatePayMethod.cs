@@ -15,7 +15,8 @@ namespace MScInvoice.Application.PayMethods
         private ApplicationDbContext _context;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public CreatePayMethod(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        public CreatePayMethod(ApplicationDbContext context, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
@@ -25,7 +26,10 @@ namespace MScInvoice.Application.PayMethods
 
         public async Task<Response> Do(Request request)
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _httpContextAccessor
+                .HttpContext
+                .User
+                .FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var payMethod = new PayMethod
             {

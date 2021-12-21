@@ -13,14 +13,16 @@
             inputs: [],
             subSum: 0
          }],
-        
+        //for selecting them in the create/update form
         customers: [],
         selectedPayMethod: {
             id: 0,
             name: ''
         },
+        //for selecting them in the create/update form
         items: [],
         payMethods: [],
+        //list of invoices
         invoices: [],
         invoice: {},
         selectedCustomer: {
@@ -38,6 +40,7 @@
             price: null,
             tax: null
         },
+        //create or update invoice methods
         InvoiceVM: {
             InvoiceId: null,
             CustomerId: 0,
@@ -49,18 +52,18 @@
             CustomerNumber1: " ",
 
             InvoiceDueDate: null,
-
+            //create or update invoice methods
             PayMethodId: 0,
+            //create or update invoice methods (empty) then populated with sections array when invoice create or update
             Sections: []
         },
-
     },
     
     mounted() {
         this.getCustomers(),
         this.getItems(),
         this.getPayMethods(),
-            this.getInvoices()
+        this.getInvoices()
 
     },
     computed: {
@@ -103,20 +106,15 @@
             }
             return 0;
         }
-        
     },
     methods: {
 
-
         test() {
-
         },
         showHideCustomer: function() {
             this.isSeenCustomer = !this.isSeenCustomer;
             this.checkButton = this.isSeenCustomer ? 'Hide' : 'Show';
-           
-
-            
+               
         },
         addCustomer() {
             this.isDisabledCustomer = false;
@@ -136,12 +134,9 @@
             this.loading = true;
             axios.get('/invoices/' + id)
                 .then(res => {
-
-                    
+    
                     var invoice = res.data;
                     
-                    
-
                     this.selectedCustomer = {
                         id: invoice.customerId,
                         name: invoice.customerName,
@@ -157,10 +152,7 @@
                         InvoiceNumber: invoice.invoiceNo,
                         InvoiceDate: invoice.date,
                         InvoiceDescription: invoice.description,
-                       DueDate: invoice.invoiceDueDate,
-
-
-                        
+                       DueDate: invoice.invoiceDueDate,   
 
                     };
                     this.selectedPayMethod = {
@@ -183,7 +175,6 @@
                             subSum: 0
                         });
 
-
                         //dispaly items for each section
                         section.invoiceItem.forEach(item => {
                             this.sections[index].inputs.push({
@@ -193,10 +184,12 @@
                                 price: item.itemPrice,
                                 tax: item.itemTax,
                                 totalLine: item.itemPrice * item.quantity,
+                                //initail calculation of each item line sum when data for updateInvoice is loaded
                                 totalLineTax: ((item.itemPrice * item.quantity) * (item.itemTax / 100))
                             });
                         });
 
+                        //initail calculation of Section sum when data for updateInvoice is loaded
                         subSum2 = this.sections[index].inputs.reduce(function (previousValue, currentValue) {
                             totalLine = parseFloat(currentValue.totalLine);
                             if (!isNaN(totalLine)) {
@@ -210,7 +203,6 @@
                         
                     });
                     
-                   
                 })
                 .catch(err => {
                     console.log(err);
@@ -242,6 +234,7 @@
             this.sections.forEach(section => {
 
                 section.inputs.forEach(input => {
+                    //array of items for current section
                     items2.push({
                         ItemId: input.id,
                         Name: input.name,
@@ -252,6 +245,7 @@
                 })
                 console.log("items2");
                 console.log(items2)
+                //populate two dimensional array; for each section array of items
                 sections2.push(
                     {
                         Name: section.name,
@@ -260,8 +254,7 @@
                 )
                 items2 = [];
             });
-
-            
+  
             axios.post('/invoices', this.InvoiceVM = {
                 CustomerId: this.selectedCustomer.id,
                 CustomerName: this.selectedCustomer.name,
@@ -274,9 +267,7 @@
                 InvoiceDueDate: this.invoice.DueDate,
 
                 PayMethodId: this.selectedPayMethod.id,
-                Sections: sections2
-
-                
+                Sections: sections2   
             })
                 .then(res => {
                     console.log(res);
@@ -286,7 +277,8 @@
                     console.log(err);
                 })
                 .then(() => {
-                    alert("Invoice Saved Successfully");
+                    
+                    this.editing = false;
                     this.loading = false;
                 });
         },
@@ -294,7 +286,6 @@
             this.objectIndex = index;
             this.getInvoice(id);
             this.editing = true;
-            
         },
         newInvoice() {
             
@@ -343,7 +334,6 @@
                 )
                 items2 = [];
             });
-
 
             axios.put('/invoices', this.InvoiceVM = {
                 InvoiceId: this.invoice.InvoiceId,
@@ -415,10 +405,7 @@
                     return previousValue + totalLine;
                 }
             }, 0);
-            this.sections[index].subSum = subSum2.toFixed(2);
-
-            
-            
+            this.sections[index].subSum = subSum2.toFixed(2);  
         },
         deleteItemFromInvoice(indexSection, indexItem) {
             this.sections[indexSection].inputs.splice(indexItem, 1)
@@ -449,6 +436,7 @@
             this.sections[indexSection].subSum = subSum2.toFixed(2);
 
         },
+        //dropdown boxes selected customer and items
         customerSelection(selection) {
             this.selectedCustomer = selection;
             console.log(selection.name + ' has been selected');
@@ -505,7 +493,5 @@
                     this.loading = false;
                 });
         },
-
-       
     }
 })

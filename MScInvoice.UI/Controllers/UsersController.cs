@@ -31,7 +31,8 @@ namespace MScInvoice.UI.Controllers
             _passwordHash = passwordHash;
         }
 
-        public async Task<IActionResult> CreateUser([FromBody] CreateUser.Request request) => 
+        public async Task<IActionResult> 
+            CreateUser([FromBody] CreateUser.Request request) => 
             Ok((await _createUser.Do(request)));
        
 
@@ -39,11 +40,13 @@ namespace MScInvoice.UI.Controllers
         public IActionResult GetUsers() => Ok(new GetUsers(_userManager).Do());
 
         [HttpPut("")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUser.Request request) => 
+        public async Task<IActionResult> 
+            UpdateUser([FromBody] UpdateUser.Request request) => 
             Ok((await new UpdateUser(_userManager, _passwordHash).Do(request)));
 
         [HttpGet("{name}")]
-        public IActionResult GetUser(string name) => Ok(new GetUser(_userManager).Do(name));
+        public IActionResult GetUser(string name) => 
+            Ok(new GetUser(_userManager).Do(name));
 
         [HttpDelete("{name}")]
         public async Task<IActionResult> DeleteUser(string name) => 

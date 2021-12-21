@@ -5,16 +5,14 @@
 
 <body>
     <h3 class="has-text-centered">Admin Panel</h3>
-
-
-
-    <partial name="_CookieConsentPartial" />
+ 
     <div class="container">
 
         <div class="columns">
             <div class="column is-3">
                 <div class="menu">
-                    @if ((await authService.AuthorizeAsync(User, "User")).Succeeded)
+                    @if ((await authService.AuthorizeAsync(User, "User"))
+                        .Succeeded)
                     {
         <p class="menu-label">Invoices Menu</p>
         <ul class="menu-list">
@@ -25,12 +23,16 @@
             <li><a asp-page="/Invoices/PayMethods">Pay Methods</a></li>
             <li><a asp-page="/Invoices/CustomerStats">Stats</a></li>
         </ul>}
-                    @if ((await authService.AuthorizeAsync(User, "Admin")).Succeeded)
+                    @if ((await authService.AuthorizeAsync(User, "Admin"))
+                        .Succeeded)
                     {
         <p class="menu-label">Admin Menu</p>
                         <ul class="menu-list">
-                            <li><a asp-page="/Accounts/Users">Configure Users</a></li>
-
+                            <li>
+                                <a asp-page="/Accounts/Users">
+                                    Configure Users
+                                </a>
+                            </li>
                         </ul>}
                     <p class="menu-label"></p>
                     <ul class="menu-list">
@@ -45,9 +47,6 @@
         </div>
     </div>
 
-
-
- 
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -18,26 +18,31 @@ namespace MScInvoice.UI.Controllers
         private ApplicationDbContext _ctx;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public ItemsController(ApplicationDbContext ctx, IHttpContextAccessor httpContextAccessor)
+        public ItemsController(ApplicationDbContext ctx,
+            IHttpContextAccessor httpContextAccessor)
         {
             _ctx = ctx;
             _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet("")]
-        public IActionResult GetItems() => Ok(new GetItems(_ctx, _httpContextAccessor).Do());
+        public IActionResult GetItems() =>
+            Ok(new GetItems(_ctx, _httpContextAccessor).Do());
 
         [HttpGet("{id}")]
         public IActionResult GetItem(int id) => Ok(new GetItem(_ctx).Do(id));
 
+
         [HttpPost("")]
-        public async Task<IActionResult> CreateItem([FromBody] CreateItem.Request request) => 
-            Ok((await new CreateItem(_ctx, _httpContextAccessor).Do(request)));
+        public async Task<IActionResult> CreateItem([FromBody] CreateItem.Request request) => Ok((await new CreateItem(_ctx, _httpContextAccessor).Do(request)));
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteItems(int id) => Ok((await new DeleteItem(_ctx).Do(id)));
+        public async Task<IActionResult> DeleteItems(int id) => 
+            Ok((await new DeleteItem(_ctx).Do(id)));
 
         [HttpPut("")]
-        public async Task<IActionResult> UptadeItem([FromBody] UpdateItem.Request request) => Ok((await new UpdateItem(_ctx).Do(request)));
+        public async Task<IActionResult> 
+            UptadeItem([FromBody] UpdateItem.Request request) => 
+            Ok((await new UpdateItem(_ctx).Do(request)));
     }
 }
